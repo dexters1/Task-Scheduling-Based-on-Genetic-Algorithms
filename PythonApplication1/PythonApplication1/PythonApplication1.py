@@ -10,8 +10,10 @@ if __name__ == "__main__":
 
     Lin = get_in_degrees(G)
     Lout = get_out_degrees(G)
-    Lsuc = get_succesors(G.V[0], G)
-    Lpred = get_predecessors(G.V[1], G)
+    Lsuc = []
+    get_succesors(G.V[0], G, Lsuc)
+    Lpred = []
+    get_predecessors(G.V[8], G, Lpred)
 
     for i in range(len(G.V)):
         print("Node:", G.V[i].val, "In degrees:", Lin[i], "Out degrees:", Lout[i])

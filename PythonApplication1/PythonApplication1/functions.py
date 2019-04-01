@@ -52,16 +52,24 @@ def get_out_degrees(G):
         L.append(n)
     return L
 
-def get_succesors(node, G):
-    L = []
+def get_succesors(node, G, L):
+    S = []
     for edge in G.E:
        if edge.first == node:
-         L.append(edge.second.val)
+         if edge.second.val not in L:
+             L.append(edge.second.val)
+             S.append(edge.second)
+    for suc in S:
+        get_succesors(suc, G, L)
     return L
 
-def get_predecessors(node, G):
-    L = []
+def get_predecessors(node, G, L):
+    S = []
     for edge in G.E:
        if edge.second == node:
-         L.append(edge.first.val)
+           if edge.first.val not in L:
+             L.append(edge.first.val)
+             S.append(edge.first)             
+    for pred in S:
+        get_predecessors(pred, G, L)
     return L
