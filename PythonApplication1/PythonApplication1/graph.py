@@ -1,9 +1,11 @@
 import sys
-from math import inf
 
 class Vertex:
-    def __init__(self, val):
+    def __init__(self, val, weight):
         self.val = val
+        self.weight = weight
+        self.successors = []
+        self.predecessors = []
 
 class Edge:
     def __init__(self, u, v):

@@ -1,28 +1,28 @@
 import sys
-from functions import *
+from GraphPreprocessing import *
+from MakeGraphVariations import *
 
 if __name__ == "__main__":
     print ("\nMakeGraph()")
     G = make_graph()
     print([x.val for x in G.V])
+    print([x.weight for x in G.V])
     print([x.first.val for x in G.E])
     print([x.second.val for x in G.E])
-
-    Lin = get_in_degrees(G, G.V[0])
-    Lout = get_out_degrees(G, G.V[0])
-    Lsuc = []
-    get_succesors(G.V[7], G, Lsuc)
-    Lpred = []
-    get_predecessors(G.V[1], G, Lpred)
-
-    print("Succesors: ", [x.val for x in Lsuc])
-    print("Predecessors: ", [x.val for x in Lpred])
-    print("In degrees: ", [x.val for x in Lin])
-    print("Out degrees: ", [x.val for x in Lout])
+    print([x.val for x in G.V[0].successors])
+    print([x.val for x in G.V[4].successors])
+    print([x.val for x in G.V[4].predecessors])
+    print([x.val for x in G.V[1].predecessors])
     
-    preProcessing(G)
+    SimplifyGraph(G)
     print("\nValues after preProcessing(): \n")
     print([x.val for x in G.V])
+    print([x.weight for x in G.V])
     print([x.first.val for x in G.E])
     print([x.second.val for x in G.E])
+    print([x.val for x in G.V[0].successors])
+    print([x.val for x in G.V[1].successors])
+    print([x.val for x in G.V[0].predecessors])
+    print([x.val for x in G.V[1].predecessors])
+
     
