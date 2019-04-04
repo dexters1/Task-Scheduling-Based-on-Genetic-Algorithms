@@ -8,9 +8,9 @@ def make_graph():
     c = Vertex("c", 23)
     d = Vertex("d", 11)
     e = Vertex("e", 21)
-    f = Vertex("f", 3)
+    f = Vertex("f", 23)
     g = Vertex("g", 17)
-    h = Vertex("h", 7)
+    h = Vertex("h", 17)
     i = Vertex("i", 13)
     j = Vertex("j", 12)
 
@@ -38,28 +38,28 @@ def make_graph():
     return G
 
 #Returns a list of all inward edges of a vertex
-def get_in_degrees(G, v):
+def get_in_degrees(G, vertex):
     L = []
     n = 0
     for edge in G.E:
-        if edge.second == v:
+        if edge.second == vertex:
                 L.append(edge.first)
     return L
 
 #Returns a list of all outward edges of a vertex
-def get_out_degrees(G, v):
+def get_out_degrees(G, vertex):
     L = []
     n = 0
     for edge in G.E:
-        if edge.first == v:
+        if edge.first == vertex:
             L.append(edge.second)
     return L
 
 #Returns a list of all successors of a vertex (an empty list must be sent as a parameter of the function call)
-def get_successors(node, G, L):
+def get_successors(vertex, G, L):
     S = []
     for edge in G.E:
-       if edge.first == node:
+       if edge.first == vertex:
          if edge.second not in L:
              L.append(edge.second)
              S.append(edge.second)
@@ -68,10 +68,10 @@ def get_successors(node, G, L):
     return L
 
 #Returns a list of all predecessors of a vertex (an empty list must be sent as a parameter of the function call)
-def get_predecessors(node, G, L):
+def get_predecessors(vertex, G, L):
     S = []
     for edge in G.E:
-       if edge.second == node:
+       if edge.second == vertex:
            if edge.first not in L:
              L.append(edge.first)
              S.append(edge.first)             
@@ -90,5 +90,13 @@ def update_predecessors(G):
     for vertex in G.V:
         vertex.predecessors[:] = []
         vertex.predecessors = get_predecessors(vertex, G, vertex.predecessors)
+
+def print_graph(G):
+    print("\n")
+    print("Vertices names:   ", [x.val for x in G.V])
+    print("Vertices weights:","[", ",  ".join([str(x.weight) for x in G.V]),"]")
+    print("First edge:  ", [x.first.val for x in G.E])
+    print("Second edge: ", [x.second.val for x in G.E])
+    print("\n")
     
        
