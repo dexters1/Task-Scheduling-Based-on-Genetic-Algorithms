@@ -1,6 +1,6 @@
 import sys
-from Graph import *
-from GraphFunctions import *
+from Graph.GraphClass import *
+from Graph.GraphFunctions import *
 
 
 # For every vertex in the graph check if the vertex has only one outward edge, if it does check if the outward vertex it's pointing to has only one inward edge, 

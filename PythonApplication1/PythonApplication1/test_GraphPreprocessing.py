@@ -1,6 +1,6 @@
 import sys
-from GraphPreprocessing import *
-from MakeGraphVariations import *
+from Graph.GraphPreprocessing import *
+from Graph.MakeGraphVariations import *
 import unittest
 
 class TestGraphPreprocessing(unittest.TestCase):

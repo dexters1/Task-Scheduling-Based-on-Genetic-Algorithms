@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b5c6546d-0b94-4763-b0ec-80e554d3f255</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Test_GraphPreprocessing.py</StartupFile>
+    <StartupFile>PythonApplication1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,18 +22,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GraphFunctions.py" />
-    <Compile Include="Graph.py" />
-    <Compile Include="GraphPreprocessing.py">
+    <Compile Include="Graph\GraphFunctions.py" />
+    <Compile Include="Graph\GraphClass.py" />
+    <Compile Include="Graph\GraphPreprocessing.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MakeGraphVariations.py">
+    <Compile Include="Graph\MakeGraphVariations.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Graph\__init__.py" />
     <Compile Include="PythonApplication1.py" />
-    <Compile Include="Test_GraphPreprocessing.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Test_GraphPreprocessing.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Graph\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

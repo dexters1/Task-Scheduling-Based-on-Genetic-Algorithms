@@ -1,6 +1,6 @@
 import sys
-from Graph import *
-from GraphFunctions import *
+from Graph.GraphClass import *
+from Graph.GraphFunctions import *
 
 def make_graph1():
     a = Vertex("a", 10)

@@ -1,5 +1,5 @@
 import sys
-from Graph import *
+from Graph.GraphClass import *
 
 #Makes a user defined graph
 def make_graph():
@@ -90,7 +90,7 @@ def update_predecessors(G):
     for vertex in G.V:
         vertex.predecessors[:] = []
         vertex.predecessors = get_predecessors(vertex, G, vertex.predecessors)
-
+#Prints the graph, the names of it's vertices, weight of vertices and how they are connected regarding Edges
 def print_graph(G):
     print("\n")
     print("Vertices names:   ", [x.val for x in G.V])
