@@ -3,12 +3,12 @@ from Graph.GraphPreprocessing import *
 from Graph.MakeGraphVariations import *
 
 if __name__ == "__main__":
-    print ("MakeGraph()")
-    G = make_graph()
-    print_graph(G)
+    print ("makeGraph()")
+    G = makeGraph()
+    printGraph(G)
     
-    SimplifyGraph(G)
+    simplifyGraph(G)
     print("Values after preProcessing(): ")
-    print_graph(G)
+    printGraph(G)
 
     
