@@ -22,7 +22,8 @@ def simplifyGraph(G):
                if(len(inwardOfChild) == 1):
                    combineVertex(vertex, outwardOfVertex[0], G)
     updateSuccessors(G)
-    updatePredecessors(G)                
+    updatePredecessors(G)
+    
 # Input args:
 #   Vertex, Vertex, Graph
 # Output args:
