@@ -3,10 +3,6 @@ from Graph.GraphPreprocessing import *
 from Graph.MakeGraphVariations import *
 import unittest
 
-#ToDos:
-# - napravi print grafova i pre i posle simplify-a
-#           https://stackoverflow.com/questions/10379448/plotting-directed-graphs-in-python-in-a-way-that-show-all-edges-separately
-
 class TestGraphPreprocessing(unittest.TestCase):
 
     #Prolog: -> doc: slika 1

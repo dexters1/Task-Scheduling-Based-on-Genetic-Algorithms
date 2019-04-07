@@ -1,0 +1,14 @@
+// slika_5_Simplified.gv
+digraph {
+	v1 [label=v1]
+	v5 [label=v5]
+	v6 [label=v6]
+	v7 [label=v7]
+	v10 [label=v10]
+	v1 -> v5 [constraint=true]
+	v1 -> v6 [constraint=true]
+	v1 -> v7 [constraint=true]
+	v5 -> v10 [constraint=true]
+	v6 -> v10 [constraint=true]
+	v7 -> v10 [constraint=true]
+}

@@ -1,0 +1,4 @@
+// slika_1_Simplified.gv
+digraph {
+	v2 [label=v2]
+}
