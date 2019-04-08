@@ -23,3 +23,27 @@ def drawGraph(G, fileName):
         dot.edge(edge.first.val, edge.second.val, constraint='true')
     fileDirectory = "test-output/" + fileName
     dot.render(fileDirectory, view=False)
+
+# Input args:
+#   int
+# output args:
+#   No output args
+# Description: 
+#   Goes through all the different graphs in the MakeGraphVariations module and
+#   calls the drawGraph fucntion for the regular graph and it's simplified 
+#   counterpart. The input argument i is used to denote the number of different 
+#   graphs in the MakeGraphVariations module  
+# Issues/Bugs:
+#   - No error handling if input argument i is larger than the number of Graphs
+#   in MakeGraphVariations
+def drawAllGraphs(i):
+    for iter in range(1,i+1):
+        funcName = "makeGraph"+str(iter)
+        G = globals()[funcName]()
+
+        fileName = "slika_" + str(iter) + ".gv"
+        drawGraph(G,fileName)
+
+        simplifyGraph(G)
+        fileNameSimplified = "slika_" + str(iter) + "_Simplified.gv"	
+        drawGraph(G,fileNameSimplified)

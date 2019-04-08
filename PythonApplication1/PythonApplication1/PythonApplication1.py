@@ -4,18 +4,7 @@ from Graph.MakeGraphVariations import *
 from Graph.DrawGraph import *
 
 if __name__ == "__main__":
-    print ("makeGraph()")
-
-    for iter in range(1,10):
-        funcName = "makeGraph"+str(iter)
-        G = globals()[funcName]()
-        
-        fileName = "slika_" + str(iter) + ".gv"
-        drawGraph(G,fileName)
-
-        simplifyGraph(G)
-        fileNameSimplified = "slika_" + str(iter) + "_Simplified.gv"	
-        drawGraph(G,fileNameSimplified)
+    drawAllGraphs(9)
 
    # G = makeGraph7()
    # printGraph(G)
