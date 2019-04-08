@@ -41,7 +41,9 @@ def simplifyGraph(G):
 def combineVertex(vertex, outwardOfVertex, G): 
     inwardOfVertex = getInDegrees(G, vertex)
     for iter in inwardOfVertex:
-        G.E.append(Edge(iter,outwardOfVertex))
+        edge = Edge(iter,outwardOfVertex)
+        edge.weight = getEdgeWeight(G, iter, vertex)
+        G.E.append(edge)
     outwardOfVertex.weight = outwardOfVertex.weight + vertex.weight
     G.V.remove(vertex)
     cG = G.E[:]

@@ -17,11 +17,12 @@ os.environ["PATH"] += os.pathsep + pathDirectory
 #   - No error handling if Graph isn't correct
 def drawGraph(G, fileName):
 
-    dot = Digraph(comment=fileName)
+    dot = Digraph()
     for vertex in G.V:
-        dot.node(vertex.val, vertex.val)
+        nodeName = vertex.val + " w:" + str(vertex.weight)
+        dot.node(vertex.val, nodeName, fontsize=str(11.0))
     for edge in G.E:
-        dot.edge(edge.first.val, edge.second.val, constraint='true')
+        dot.edge(edge.first.val, edge.second.val,label=str(edge.weight), fontsize=str(6.0),constraint='true')
     fileDirectory = "test-output/" + fileName
     dot.render(fileDirectory, view=False)
 

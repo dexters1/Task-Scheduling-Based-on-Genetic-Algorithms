@@ -50,7 +50,6 @@ def makeGraph():
 #   Returns a list of all inward edges of a vertex
 def getInDegrees(G, vertex):
     L = []
-    n = 0
     for edge in G.E:
         if edge.second == vertex:
                 L.append(edge.first)
@@ -64,11 +63,24 @@ def getInDegrees(G, vertex):
 #   Returns a list of all outward edges of a vertex
 def getOutDegrees(G, vertex):
     L = []
-    n = 0
     for edge in G.E:
         if edge.first == vertex:
             L.append(edge.second)
     return L
+
+# Input args:
+#   Graph, Vertex, Vertex
+# output args:
+#   List
+# Description: 
+#   Returns weight of edge between first and second vertex sent, if there is
+#   no edge exits application
+def getEdgeWeight(G, first, second):
+    for edge in G.E:
+        if edge.first == first and edge.second == second:
+            return edge.weight
+    exit(1)
+
 
 # Input args:
 #   Vertex, Graph, List
