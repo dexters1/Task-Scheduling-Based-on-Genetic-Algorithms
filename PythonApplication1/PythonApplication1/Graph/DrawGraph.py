@@ -1,5 +1,6 @@
 from graphviz import Digraph
-from Graph.GraphClass import *
+from Graph.GraphPreprocessing import *
+from Graph.MakeGraphVariations import *
 import os
 pathDirectory = os.path.dirname(os.path.dirname(__file__)) + "\\Graphviz\\bin"
 os.environ["PATH"] += os.pathsep + pathDirectory
@@ -38,12 +39,13 @@ def drawGraph(G, fileName):
 #   in MakeGraphVariations
 def drawAllGraphs(i):
     for iter in range(1,i+1):
-        funcName = "makeGraph"+str(iter)
-        G = globals()[funcName]()
+           funcName = "makeGraph"+str(iter)
+           G = globals()[funcName]()
 
-        fileName = "slika_" + str(iter) + ".gv"
-        drawGraph(G,fileName)
+           fileName = "slika_" + str(iter) + ".gv"
+           drawGraph(G,fileName)
 
-        simplifyGraph(G)
-        fileNameSimplified = "slika_" + str(iter) + "_Simplified.gv"	
-        drawGraph(G,fileNameSimplified)
+           simplifyGraph(G)
+
+           fileNameSimplified = "slika_" + str(iter) + "_Simplified.gv"	
+           drawGraph(G,fileNameSimplified)
