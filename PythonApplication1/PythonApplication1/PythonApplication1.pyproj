@@ -34,11 +34,21 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Graph\__init__.py" />
+    <Compile Include="Processor\ProcessorClass.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Processor\ProcessorFunctions.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Processor\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PythonApplication1.py" />
     <Compile Include="Test_GraphPreprocessing.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graph\" />
+    <Folder Include="Processor\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,9 +4,10 @@ import random
 random.seed(30)
 
 class Vertex:
-    def __init__(self, val, weight):
+    def __init__(self, val, weight, processor=None):
         self.val = val
         self.weight = weight
+        self.processor = processor
         self.successors = []
         self.predecessors = []
 

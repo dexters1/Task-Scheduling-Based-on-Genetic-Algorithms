@@ -1,6 +1,7 @@
 import sys
 from Graph.GraphClass import *
 from Graph.GraphFunctions import *
+from Processor.ProcessorClass import *
 
 # Applies for all makeGraph function Variations
 
@@ -325,6 +326,41 @@ def makeGraph9():
     edges.append(Edge(v18, v19))
     edges.append(Edge(v19, v20))
 
+
+    G = Graph(vertex, edges)
+
+    updateSuccessors(G)
+    updatePredecessors(G)
+
+    return G
+
+def makeGraphTest():
+
+    p1 = Processor(capacity=1)
+    p2 = Processor(capacity =1)
+    P = ProcessorList([p1,p2])
+
+    v1 = Vertex("v1", 10, p1)
+    v2 = Vertex("v2", 15, p1)
+    v3 = Vertex("v3", 23, p1)
+    v4 = Vertex("v4", 11, p1)
+    v5 = Vertex("v5", 21, p1)
+
+    vertex = [v1, v2, v3, v4, v5]
+
+    p1.taskList = [v1, v3, v4]
+    p2.taskList = [v2, v5]
+
+    
+
+    edges = []
+
+    edges.append(Edge(v1, v2))
+    edges.append(Edge(v1, v3))
+    edges.append(Edge(v1, v4))
+    edges.append(Edge(v2, v5))
+    edges.append(Edge(v3, v5))
+    edges.append(Edge(v4, v5))
 
     G = Graph(vertex, edges)
 
