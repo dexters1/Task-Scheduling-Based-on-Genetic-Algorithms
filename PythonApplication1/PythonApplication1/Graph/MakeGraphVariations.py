@@ -341,10 +341,10 @@ def makeGraphTest():
     P = ProcessorList([p1,p2])
 
     v1 = Vertex("v1", 10, p1)
-    v2 = Vertex("v2", 15, p1)
+    v2 = Vertex("v2", 15, p2)
     v3 = Vertex("v3", 23, p1)
     v4 = Vertex("v4", 11, p1)
-    v5 = Vertex("v5", 21, p1)
+    v5 = Vertex("v5", 21, p2)
 
     vertex = [v1, v2, v3, v4, v5]
 

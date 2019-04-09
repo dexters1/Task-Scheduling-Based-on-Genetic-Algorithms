@@ -1,0 +1,18 @@
+digraph {
+	v1 [label="v1
+w:10|b:|e:|" fontsize=8.0]
+	v2 [label="v2
+w:15|b:|e:|" fontsize=8.0]
+	v3 [label="v3
+w:23|b:|e:|" fontsize=8.0]
+	v4 [label="v4
+w:11|b:|e:|" fontsize=8.0]
+	v5 [label="v5
+w:21|b:|e:|" fontsize=8.0]
+	v1 -> v2 [label=27 constraint=true fontsize=6.0]
+	v1 -> v3 [label=19 constraint=true fontsize=6.0]
+	v1 -> v4 [label=29 constraint=true fontsize=6.0]
+	v2 -> v5 [label=10 constraint=true fontsize=6.0]
+	v3 -> v5 [label=29 constraint=true fontsize=6.0]
+	v4 -> v5 [label=30 constraint=true fontsize=6.0]
+}

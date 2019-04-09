@@ -6,6 +6,8 @@ from Processor.ProcessorFunctions import*
 
 if __name__ == "__main__":
     G = makeGraphTest()
+    drawGraph(G, "testingProccesingFunction.gv")
+
     print(startTime(G, G.V[0]))
     print(finishTime(G, G.V[0]))
     print("\n")

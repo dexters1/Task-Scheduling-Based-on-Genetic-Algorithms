@@ -19,8 +19,8 @@ def drawGraph(G, fileName):
 
     dot = Digraph()
     for vertex in G.V:
-        nodeName = vertex.val + " w:" + str(vertex.weight)
-        dot.node(vertex.val, nodeName, fontsize=str(11.0))
+        nodeName = vertex.val + "\n" + "w:" + str(vertex.weight) + "|"+"b:"+"|"+"e:"+"|"
+        dot.node(vertex.val, nodeName, fontsize=str(8.0))
     for edge in G.E:
         dot.edge(edge.first.val, edge.second.val,label=str(edge.weight), fontsize=str(6.0),constraint='true')
     fileDirectory = "test-output/" + fileName
