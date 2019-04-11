@@ -91,7 +91,7 @@ def getEdgeWeight(G, first, second):
 # Issues/Bugs:
 #  - An empty list must be sent as a parameter of the function call or it will
 #   not work proprely
-def getSuccessors(vertex, G, L):
+def getAllSuccessors(vertex, G, L):
     S = []
     for edge in G.E:
        if edge.first == vertex:
@@ -99,7 +99,7 @@ def getSuccessors(vertex, G, L):
              L.append(edge.second)
              S.append(edge.second)
     for suc in S:
-        getSuccessors(suc, G, L)
+        getAllSuccessors(suc, G, L)
     return L
 
 # Input args:
@@ -111,7 +111,7 @@ def getSuccessors(vertex, G, L):
 # Issues/Bugs:
 #   - An empty list must be sent as a parameter of the function call or it will
 #   not work proprely
-def getPredecessors(vertex, G, L):
+def getAllPredecessors(vertex, G, L):
     S = []
     for edge in G.E:
        if edge.second == vertex:
@@ -119,7 +119,7 @@ def getPredecessors(vertex, G, L):
              L.append(edge.first)
              S.append(edge.first)             
     for pred in S:
-        getPredecessors(pred, G, L)
+        getAllPredecessors(pred, G, L)
     return L
 
 # Input args:
@@ -131,7 +131,7 @@ def getPredecessors(vertex, G, L):
 def updateSuccessors(G):
     for vertex in G.V:
         vertex.successors[:] = []
-        vertex.successors = getSuccessors(vertex, G, vertex.successors)
+        vertex.successors = getOutDegrees(G, vertex)
 
 # Input args:
 #   Graph
@@ -142,7 +142,7 @@ def updateSuccessors(G):
 def updatePredecessors(G):
     for vertex in G.V:
         vertex.predecessors[:] = []
-        vertex.predecessors = getPredecessors(vertex, G, vertex.predecessors)
+        vertex.predecessors = getInDegrees(G, vertex)
 
 # Input args:
 #   Graph

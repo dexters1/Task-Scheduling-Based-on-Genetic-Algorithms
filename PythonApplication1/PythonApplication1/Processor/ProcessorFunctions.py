@@ -98,7 +98,8 @@ def availableProcessorForTask(G, vertex):
     for iter in vertex.processor.taskList:
         if iter == vertex:
             return n
-        n = finishTime(G, iter)
+        if not (isinstance(iter, Slot)): #if not idle time
+            n = finishTime(G, iter)
     return n
 
 # Input args:
@@ -130,8 +131,33 @@ def updateFinishTime(G):
 def vmCost(processor):
     return vmBase*exp(processor.capacity/vmBaseSpeed)
 
-#def cost(processor):
-#    n = 0
-#    for task in len(processor.taskList):
-#        n += vmCost(processor)*calculateETC()
+# Input args:
+#   Processor
+# output args:
+#   No output args
+# Description: 
+#   Adds an element of type slot in processor.taskList to denote processor 
+#   idle-time if no tasks are being processed
+def addSlot(processor):
+    for i in range(0,len(processor.taskList)-1):
+        if processor.taskList[i].finishTime != processor.taskList[i+1].startTime:
+            processor.taskList.insert(i+1,Slot(processor.taskList[i].finishTime,processor.taskList[i+1].startTime))
 
+# Input args:
+#   Processor, Vertex
+# output args:
+#   No output args
+# Description: 
+#   Calculates the total cost of task execution on processor. In case of idle
+#   time it just multiplies the price per unit of time with the idle time
+def cost(processor, vertex):
+    if not isinstance(vertex,Slot):
+        return vmCost(processor)*calculateETC(vertex.weight, processor)
+    return vmCost(processor)*(vertex.finishTime - vertex.startTime)
+
+def totalCost(processorList):
+    n = 0
+    for processor in processorList:
+        for task in processor.taskList:
+            n += cost(processor,vertex)
+    return n

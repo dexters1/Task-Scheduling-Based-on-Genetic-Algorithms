@@ -337,8 +337,8 @@ def makeGraph9():
 
 def makeGraphTest():
 
-    p1 = Processor(capacity=1)
-    p2 = Processor(capacity =1)
+    p1 = Processor(capacity=1, val="p1")
+    p2 = Processor(capacity=1, val="p2")
     P = ProcessorList([p1,p2])
 
     v1 = Vertex("v1", 10, p1)
@@ -370,5 +370,8 @@ def makeGraphTest():
 
     updateStartTime(G)
     updateFinishTime(G)
+
+    addSlot(p1)
+    addSlot(p2)
 
     return G

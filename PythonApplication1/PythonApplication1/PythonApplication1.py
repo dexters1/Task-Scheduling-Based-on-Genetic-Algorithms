@@ -8,24 +8,9 @@ if __name__ == "__main__":
     G = makeGraphTest()
     drawGraph(G, "testingProccesingFunction.gv")
 
-    print(startTime(G, G.V[0]))
-    print(finishTime(G, G.V[0]))
-    print("\n")
-
-    print(startTime(G, G.V[1]))
-    print(finishTime(G, G.V[1]))
-    print("\n")
-
-    print(startTime(G, G.V[2]))
-    print(finishTime(G, G.V[2]))
-    print("\n")
-
-    print(startTime(G, G.V[3]))
-    print(finishTime(G, G.V[3]))
-    print("\n")
-
-    print(startTime(G, G.V[4]))
-    print(finishTime(G, G.V[4]))
-    print("\n")
+    for task in G.V[1].processor.taskList:
+        print(str(task.startTime) + " " + str(task.finishTime))
+        if isinstance(task, Slot):
+            print("SLOT!")
 
     #drawAllGraphs(9)

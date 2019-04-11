@@ -16,7 +16,7 @@ class Vertex:
 class Edge:
     def __init__(self, u, v):
         self.first = u
-        self.second = v
+        self.second = v 
         self.weight = random.randint(10,30)
 
 class Graph:
