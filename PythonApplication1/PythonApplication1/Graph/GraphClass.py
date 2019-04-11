@@ -8,6 +8,8 @@ class Vertex:
         self.val = val
         self.weight = weight
         self.processor = processor
+        self.startTime = None
+        self.finishTime = None
         self.successors = []
         self.predecessors = []
 

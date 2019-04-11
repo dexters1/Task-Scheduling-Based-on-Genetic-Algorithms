@@ -6,6 +6,7 @@ from Graph.DrawGraph import *
 # ToDo:
 # - Ceil-uj na vise
 # - Sredi unit testing za ProcessorFunctions
+# - https://towardsdatascience.com/evolution-of-a-salesman-a-complete-genetic-algorithm-tutorial-for-python-6fe5d2b3ca35
 
 vmBasePrice = 0.0475
 vmBaseSpeed = 1.0
@@ -100,9 +101,35 @@ def availableProcessorForTask(G, vertex):
         n = finishTime(G, iter)
     return n
 
+# Input args:
+#   Graph
+# output args:
+#   No output args
+# Description: 
+#   Updates the startTime for all the vertexes in the graph
+def updateStartTime(G):
+    for vertex in G.V:
+        vertex.startTime = startTime(G,vertex)
 
-#def vmCost(processor):
-#    return vmBase*exp(processor.capacity/vmBaseSpeed)
+# Input args:
+#   Graph
+# output args:
+#   No output args
+# Description: 
+#   Updates the finishTime for all the vertexes in the graph
+def updateFinishTime(G):
+    for vertex in G.V:
+        vertex.finishTime = finishTime(G,vertex)
+
+# Input args:
+#   Processor
+# output args:
+#   No output args
+# Description: 
+#   Calculates the cost of the virtual machine per unit of time
+def vmCost(processor):
+    return vmBase*exp(processor.capacity/vmBaseSpeed)
+
 #def cost(processor):
 #    n = 0
 #    for task in len(processor.taskList):

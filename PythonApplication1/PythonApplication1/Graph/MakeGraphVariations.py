@@ -2,6 +2,7 @@ import sys
 from Graph.GraphClass import *
 from Graph.GraphFunctions import *
 from Processor.ProcessorClass import *
+from Processor.ProcessorFunctions import *
 
 # Applies for all makeGraph function Variations
 
@@ -366,5 +367,8 @@ def makeGraphTest():
 
     updateSuccessors(G)
     updatePredecessors(G)
+
+    updateStartTime(G)
+    updateFinishTime(G)
 
     return G
