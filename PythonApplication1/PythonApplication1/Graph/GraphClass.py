@@ -20,7 +20,8 @@ class Edge:
         self.weight = random.randint(10,30)
 
 class Graph:
-    def __init__(self, V=[], E=[]):
+    def __init__(self, V=[], E=[], P=[]):
         self.V = V
         self.E = E
+        self.P = P
  

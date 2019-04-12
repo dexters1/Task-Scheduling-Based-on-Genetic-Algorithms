@@ -129,7 +129,7 @@ def updateFinishTime(G):
 # Description: 
 #   Calculates the cost of the virtual machine per unit of time
 def vmCost(processor):
-    return vmBase*exp(processor.capacity/vmBaseSpeed)
+    return vmBasePrice*exp(processor.capacity/vmBaseSpeed)
 
 # Input args:
 #   Processor
@@ -155,9 +155,16 @@ def cost(processor, vertex):
         return vmCost(processor)*calculateETC(vertex.weight, processor)
     return vmCost(processor)*(vertex.finishTime - vertex.startTime)
 
+# Input args:
+#   ProcessorList
+# output args:
+#   double
+# Description: 
+#   Calculates the total cost of task execution on processor. In case of idle
+#   time it just multiplies the price per unit of time with the idle time
 def totalCost(processorList):
-    n = 0
-    for processor in processorList:
+    n = 0.0
+    for processor in processorList.processorList:
         for task in processor.taskList:
-            n += cost(processor,vertex)
-    return n
+            n += cost(processor,task)
+    return n 

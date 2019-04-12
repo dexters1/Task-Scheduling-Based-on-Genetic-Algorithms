@@ -13,4 +13,5 @@ if __name__ == "__main__":
         if isinstance(task, Slot):
             print("SLOT!")
 
+    print(totalCost(G.P))
     #drawAllGraphs(9)

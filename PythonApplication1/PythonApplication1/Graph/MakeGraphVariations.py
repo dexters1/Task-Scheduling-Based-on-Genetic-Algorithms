@@ -363,7 +363,7 @@ def makeGraphTest():
     edges.append(Edge(v3, v5))
     edges.append(Edge(v4, v5))
 
-    G = Graph(vertex, edges)
+    G = Graph(vertex, edges, P)
 
     updateSuccessors(G)
     updatePredecessors(G)
