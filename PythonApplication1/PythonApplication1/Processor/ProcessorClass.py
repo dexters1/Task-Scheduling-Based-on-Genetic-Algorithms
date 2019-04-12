@@ -8,6 +8,7 @@ class Slot:
     def __init__(self,startTime,finishTime):
         self.startTime = startTime
         self.finishTime = finishTime
+        self.val = "Slot"
 
 class Processor:
     def __init__(self, taskList=[], capacity=0, val="None"):

@@ -3,6 +3,7 @@ from Graph.GraphClass import *
 from Graph.GraphFunctions import *
 from Processor.ProcessorClass import *
 from Processor.ProcessorFunctions import *
+from Graph.PriorityDefinition import *
 
 # Applies for all makeGraph function Variations
 
@@ -14,8 +15,16 @@ from Processor.ProcessorFunctions import *
 #   Makes a predefined graph
 
 def makeGraph1():
-    v1 = Vertex("v1", 10)
-    v2 = Vertex("v2", 15)
+
+    p1 = Processor(capacity=2, val="p1")
+    p2 = Processor(capacity=1, val="p2")
+    P = ProcessorList([p1,p2])
+
+    v1 = Vertex("v1", 10, p1)
+    v2 = Vertex("v2", 15, p2)
+
+    p1.taskList = [v1]
+    p2.taskList = [v2]
 
     vertex = [v1, v2]
 
@@ -23,10 +32,16 @@ def makeGraph1():
 
     edges.append(Edge(v1, v2))
 
-    G = Graph(vertex, edges)
+    G = Graph(vertex, edges, P)
 
     updateSuccessors(G)
     updatePredecessors(G)
+
+    updateStartTime(G)
+    updateFinishTime(G)
+
+    addSlot(p1)
+    addSlot(p2)
 
     return G
 
@@ -339,7 +354,8 @@ def makeGraphTest():
 
     p1 = Processor(capacity=1, val="p1")
     p2 = Processor(capacity=1, val="p2")
-    P = ProcessorList([p1,p2])
+    p3 = Processor(capacity=2, val="p3")
+    P = ProcessorList([p1,p2,p3])
 
     v1 = Vertex("v1", 10, p1)
     v2 = Vertex("v2", 15, p2)
@@ -351,6 +367,7 @@ def makeGraphTest():
 
     p1.taskList = [v1, v3, v4]
     p2.taskList = [v2, v5]
+    p3.taskList = []
 
     
 
@@ -365,11 +382,18 @@ def makeGraphTest():
 
     G = Graph(vertex, edges, P)
 
+
+
     updateSuccessors(G)
     updatePredecessors(G)
 
     updateStartTime(G)
     updateFinishTime(G)
+
+    priorityDefinition(G)
+    sortGraphByPriority(G)
+    print([x.priority for x in G.V])
+    print([x.val for x in G.V])
 
     addSlot(p1)
     addSlot(p2)

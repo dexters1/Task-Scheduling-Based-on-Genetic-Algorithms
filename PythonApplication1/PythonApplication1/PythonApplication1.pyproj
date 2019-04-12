@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b5c6546d-0b94-4763-b0ec-80e554d3f255</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>PythonApplication1.py</StartupFile>
+    <StartupFile>Test_ProcessorFunctions.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -33,6 +33,9 @@
     <Compile Include="Graph\MakeGraphVariations.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Graph\PriorityDefinition.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Graph\__init__.py" />
     <Compile Include="Processor\ProcessorClass.py">
       <SubType>Code</SubType>
@@ -45,6 +48,9 @@
     </Compile>
     <Compile Include="PythonApplication1.py" />
     <Compile Include="Test_GraphPreprocessing.py" />
+    <Compile Include="Test_ProcessorFunctions.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graph\" />

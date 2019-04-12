@@ -1,5 +1,6 @@
 import sys
 from math import exp
+from math import ceil
 from Processor.ProcessorClass import *
 from Graph.DrawGraph import *
 
@@ -8,7 +9,8 @@ from Graph.DrawGraph import *
 # - Sredi unit testing za ProcessorFunctions
 # - https://towardsdatascience.com/evolution-of-a-salesman-a-complete-genetic-algorithm-tutorial-for-python-6fe5d2b3ca35
 
-vmBasePrice = 0.0475
+vmBasePrice = 0.1 
+#0.0475
 vmBaseSpeed = 1.0
 
 # Input args:
@@ -64,7 +66,7 @@ def finishTime(G, vertex):
 # Issues:
 #   - Treba videti da li treba broj zaokruziti navise sa ceil-om
 def calculateETC(time, processor):
-    return time//processor.capacity 
+    return ceil(time/processor.capacity) 
 
 # Input args:
 #   Graph, Vertex, Vertex

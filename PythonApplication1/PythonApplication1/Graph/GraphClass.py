@@ -10,6 +10,7 @@ class Vertex:
         self.processor = processor
         self.startTime = None
         self.finishTime = None
+        self.priority = None
         self.successors = []
         self.predecessors = []
 
