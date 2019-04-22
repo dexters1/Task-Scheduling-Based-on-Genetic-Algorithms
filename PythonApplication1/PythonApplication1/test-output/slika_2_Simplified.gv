@@ -1,8 +1,12 @@
 digraph {
-	v1 [label="v1 w:10" fontsize=11.0]
-	v2 [label="v2 w:15" fontsize=11.0]
-	v3 [label="v3 w:23" fontsize=11.0]
-	v4 [label="v4 w:11" fontsize=11.0]
+	v1 [label="v1
+w:10|st:0|ft:4|p3" fontsize=8.0]
+	v2 [label="v2
+w:24|st:23|ft:35|p2" fontsize=8.0]
+	v3 [label="v3
+w:23|st:35|ft:47|p2" fontsize=8.0]
+	v4 [label="v4
+w:11|st:14|ft:25|p1" fontsize=8.0]
 	v1 -> v2 [label=19 constraint=true fontsize=6.0]
 	v1 -> v3 [label=29 constraint=true fontsize=6.0]
 	v1 -> v4 [label=10 constraint=true fontsize=6.0]

@@ -2,12 +2,13 @@ import sys
 from math import exp
 from math import ceil
 from Processor.ProcessorClass import *
-from Graph.DrawGraph import *
+from Graph.GraphPreprocessing import *
+from Graph.MakeGraphVariations import *
 
 # ToDo:
 # - Ceil-uj na vise
 # - Sredi unit testing za ProcessorFunctions
-# - https://towardsdatascience.com/evolution-of-a-salesman-a-complete-genetic-algorithm-tutorial-for-python-6fe5d2b3ca35
+# - Sredi dubinu i sortiranje po dubini
 
 vmBasePrice = 0.1 
 #0.0475
@@ -40,8 +41,7 @@ def predecessorTime(G, vertex):
     if (len(vertex.predecessors) == 0):
         return [0]
     L = []
-    inDegree = getInDegrees(G, vertex)
-    for pred in inDegree:
+    for pred in vertex.predecessors:
         L.append((finishTime(G, pred) + communicationCost(G, pred, vertex)))
     return L
 
@@ -55,7 +55,9 @@ def predecessorTime(G, vertex):
 # Issues:
 #   - No error handling if input isn't correct
 def finishTime(G, vertex):
-    return startTime(G, vertex) + calculateETC(vertex.weight, vertex.processor)
+    if vertex.startTime == None:
+        return startTime(G, vertex) + calculateETC(vertex.weight, vertex.processor)
+    return vertex.startTime + calculateETC(vertex.weight, vertex.processor)
 
 # Input args:
 #   Int, Int
@@ -101,7 +103,11 @@ def availableProcessorForTask(G, vertex):
         if iter == vertex:
             return n
         if not (isinstance(iter, Slot)): #if not idle time
-            n = finishTime(G, iter)
+            #n = finishTime(G, iter)
+            if iter.finishTime == None:
+                n = finishTime(G, iter)
+            else:
+                n = iter.finishTime
     return n
 
 # Input args:
@@ -140,10 +146,11 @@ def vmCost(processor):
 # Description: 
 #   Adds an element of type slot in processor.taskList to denote processor 
 #   idle-time if no tasks are being processed
-def addSlot(processor):
-    for i in range(0,len(processor.taskList)-1):
-        if processor.taskList[i].finishTime != processor.taskList[i+1].startTime:
-            processor.taskList.insert(i+1,Slot(processor.taskList[i].finishTime,processor.taskList[i+1].startTime))
+def addSlot(G):
+    for processor in G.P.processorList:
+        for i in range(0,len(processor.taskList)-1):
+            if processor.taskList[i].finishTime != processor.taskList[i+1].startTime:
+                processor.taskList.insert(i+1,Slot(processor.taskList[i].finishTime,processor.taskList[i+1].startTime))
 
 # Input args:
 #   Processor, Vertex
@@ -170,3 +177,9 @@ def totalCost(processorList):
         for task in processor.taskList:
             n += cost(processor,task)
     return n 
+
+def updateProcessorTaskList(G):
+    for process in G.P.processorList:
+        process.taskList = []
+    for vertex in G.V:
+        vertex.processor.taskList.append(vertex)

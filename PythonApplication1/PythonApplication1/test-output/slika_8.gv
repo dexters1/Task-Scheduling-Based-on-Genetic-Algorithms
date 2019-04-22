@@ -1,40 +1,58 @@
 digraph {
-	v1 [label="v1 w:10" fontsize=11.0]
-	v2 [label="v2 w:15" fontsize=11.0]
-	v3 [label="v3 w:23" fontsize=11.0]
-	v4 [label="v4 w:11" fontsize=11.0]
-	v5 [label="v5 w:21" fontsize=11.0]
-	v6 [label="v6 w:3" fontsize=11.0]
-	v7 [label="v7 w:17" fontsize=11.0]
-	v8 [label="v8 w:7" fontsize=11.0]
-	v9 [label="v9 w:13" fontsize=11.0]
-	v10 [label="v10 w:12" fontsize=11.0]
-	v11 [label="v11 w:23" fontsize=11.0]
-	v12 [label="v12 w:11" fontsize=11.0]
-	v13 [label="v13 w:21" fontsize=11.0]
-	v14 [label="v14 w:3" fontsize=11.0]
-	v15 [label="v15 w:17" fontsize=11.0]
-	v16 [label="v16 w:13" fontsize=11.0]
-	v17 [label="v17 w:13" fontsize=11.0]
-	v18 [label="v18 w:12" fontsize=11.0]
-	v1 -> v5 [label=10 constraint=true fontsize=6.0]
-	v2 -> v6 [label=30 constraint=true fontsize=6.0]
-	v3 -> v7 [label=13 constraint=true fontsize=6.0]
+	v1 [label="v1
+w:10|st:None|ft:None|p3" fontsize=8.0]
+	v2 [label="v2
+w:15|st:None|ft:None|p2" fontsize=8.0]
+	v3 [label="v3
+w:23|st:None|ft:None|p1" fontsize=8.0]
+	v4 [label="v4
+w:11|st:None|ft:None|p3" fontsize=8.0]
+	v5 [label="v5
+w:21|st:None|ft:None|p2" fontsize=8.0]
+	v6 [label="v6
+w:3|st:None|ft:None|p1" fontsize=8.0]
+	v7 [label="v7
+w:17|st:None|ft:None|p2" fontsize=8.0]
+	v8 [label="v8
+w:7|st:None|ft:None|p3" fontsize=8.0]
+	v9 [label="v9
+w:13|st:None|ft:None|p1" fontsize=8.0]
+	v10 [label="v10
+w:12|st:None|ft:None|p2" fontsize=8.0]
+	v11 [label="v11
+w:23|st:None|ft:None|p3" fontsize=8.0]
+	v12 [label="v12
+w:11|st:None|ft:None|p1" fontsize=8.0]
+	v13 [label="v13
+w:21|st:None|ft:None|p3" fontsize=8.0]
+	v14 [label="v14
+w:3|st:None|ft:None|p2" fontsize=8.0]
+	v15 [label="v15
+w:17|st:None|ft:None|p3" fontsize=8.0]
+	v16 [label="v16
+w:13|st:None|ft:None|p1" fontsize=8.0]
+	v17 [label="v17
+w:13|st:None|ft:None|p2" fontsize=8.0]
+	v18 [label="v18
+w:12|st:None|ft:None|p3" fontsize=8.0]
+	v1 -> v5 [label=25 constraint=true fontsize=6.0]
+	v2 -> v6 [label=25 constraint=true fontsize=6.0]
+	v3 -> v7 [label=18 constraint=true fontsize=6.0]
 	v4 -> v8 [label=25 constraint=true fontsize=6.0]
-	v5 -> v9 [label=25 constraint=true fontsize=6.0]
-	v6 -> v9 [label=18 constraint=true fontsize=6.0]
-	v7 -> v9 [label=25 constraint=true fontsize=6.0]
-	v8 -> v9 [label=18 constraint=true fontsize=6.0]
-	v9 -> v10 [label=28 constraint=true fontsize=6.0]
-	v9 -> v11 [label=18 constraint=true fontsize=6.0]
-	v9 -> v12 [label=15 constraint=true fontsize=6.0]
-	v9 -> v13 [label=15 constraint=true fontsize=6.0]
-	v10 -> v14 [label=15 constraint=true fontsize=6.0]
-	v11 -> v15 [label=26 constraint=true fontsize=6.0]
-	v12 -> v16 [label=19 constraint=true fontsize=6.0]
-	v13 -> v17 [label=23 constraint=true fontsize=6.0]
-	v14 -> v18 [label=17 constraint=true fontsize=6.0]
-	v15 -> v18 [label=16 constraint=true fontsize=6.0]
-	v16 -> v18 [label=25 constraint=true fontsize=6.0]
-	v17 -> v18 [label=21 constraint=true fontsize=6.0]
+	v5 -> v9 [label=18 constraint=true fontsize=6.0]
+	v6 -> v9 [label=28 constraint=true fontsize=6.0]
+	v7 -> v9 [label=18 constraint=true fontsize=6.0]
+	v8 -> v9 [label=15 constraint=true fontsize=6.0]
+	v9 -> v10 [label=15 constraint=true fontsize=6.0]
+	v9 -> v11 [label=15 constraint=true fontsize=6.0]
+	v9 -> v12 [label=26 constraint=true fontsize=6.0]
+	v9 -> v13 [label=19 constraint=true fontsize=6.0]
+	v10 -> v14 [label=23 constraint=true fontsize=6.0]
+	v11 -> v15 [label=17 constraint=true fontsize=6.0]
+	v12 -> v16 [label=16 constraint=true fontsize=6.0]
+	v13 -> v17 [label=25 constraint=true fontsize=6.0]
+	v14 -> v18 [label=21 constraint=true fontsize=6.0]
+	v15 -> v18 [label=23 constraint=true fontsize=6.0]
+	v16 -> v18 [label=29 constraint=true fontsize=6.0]
+	v17 -> v18 [label=19 constraint=true fontsize=6.0]
 }

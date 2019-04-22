@@ -120,3 +120,15 @@ def printGraph(G):
     print("Second edge:", [x.second.val for x in G.E])
     print("\n")
        
+
+def updateGraph(G):
+    import Processor.ProcessorFunctions
+    import Graph.PriorityDefinition
+    updateSuccessors(G)
+    updatePredecessors(G)
+    Graph.PriorityDefinition.priorityDefinition(G)
+    print([x.val for x in G.V])
+    Processor.ProcessorFunctions.updateProcessorTaskList(G)
+    Processor.ProcessorFunctions.updateStartTime(G)
+    Processor.ProcessorFunctions.updateFinishTime(G)
+    Processor.ProcessorFunctions.addSlot(G)

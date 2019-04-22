@@ -15,6 +15,7 @@ from math import inf
 def priorityDefinition(G):
     alpha = 1
     beta = 1
+    L = []
     for vertex in G.V:
         vertex.priority = alpha*len(vertex.predecessors)*priorityDefinitionHeft(G, vertex)+beta*communicationCostOfSuccesors(G, vertex)
 
@@ -72,6 +73,25 @@ def communicationCostOfSuccesors(G, vertex):
         n += getEdgeWeight(G, vertex, successor)
     return n
 
+def defineGraphDepth(G):
+    n = 0
+    vertex = G.V[0]
+    vertex.depth = 0
+    graphDepthHelperFunction(n, vertex, G)
+
+def graphDepthHelperFunction(n, vertex, G):
+    c = n + 1
+    for successor in vertex.successors:
+        if successor.depth == None:
+            successor.depth = c
+        if successor.depth < c:
+            successor.depth = c
+    for successor in vertex.successors:
+         graphDepthHelperFunction( c, successor, G)
+
+
+
+
 # Input args:
 #   Graph
 # output args:
@@ -81,5 +101,14 @@ def communicationCostOfSuccesors(G, vertex):
 # Issues/Bugs:
 #   No error handling if Graph isn't correct
 def sortGraphByPriority(G):
-    G.V.sort(key=lambda x: x.priority, reverse=True)
+    defineGraphDepth(G)
+    print("Prio:")
+    print([x.val for x in G.V])
+    print([x.depth for x in G.V])
+    print("prio end")
+    G.V.sort(key=lambda x: (x.depth, x.priority), reverse=False)
+    print("Prio sort:")
+    print([x.val for x in G.V])
+    print([x.depth for x in G.V])
+    print("prio sort end")
     

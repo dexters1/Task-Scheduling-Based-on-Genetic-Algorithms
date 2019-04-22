@@ -1,3 +1,4 @@
 digraph {
-	v2 [label="v2 w:25" fontsize=11.0]
+	v2 [label="v2
+w:25|st:37|ft:45|p2" fontsize=8.0]
 }

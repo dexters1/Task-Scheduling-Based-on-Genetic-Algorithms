@@ -13,6 +13,7 @@ class Vertex:
         self.priority = None
         self.successors = []
         self.predecessors = []
+        self.depth = None
 
 class Edge:
     def __init__(self, u, v):
