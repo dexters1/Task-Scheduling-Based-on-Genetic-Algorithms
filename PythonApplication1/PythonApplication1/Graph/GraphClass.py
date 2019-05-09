@@ -16,10 +16,13 @@ class Vertex:
         self.depth = None
 
 class Edge:
-    def __init__(self, u, v):
+    def __init__(self, u, v, weight=None):
         self.first = u
         self.second = v 
-        self.weight = random.randint(10,30)
+        if (weight==None):
+            self.weight = random.randint(10,30)
+        else:
+            self.weight = weight
 
 class Graph:
     def __init__(self, V=[], E=[], P=[]):

@@ -12,13 +12,20 @@ import unittest
 class TestProcessorFunctions(unittest.TestCase):
     def testGraphAfterProcessingFunctions1(self):
         G = makeGraph1()
-        print(totalCost(G.P))
         self.assertEqual(ceil(totalCost(G.P)), 9)
-        self.assertEqual([x.startTime for x in G.V], [0, 32])
-        self.assertEqual([x.finishTime for x in G.V], [5,47])
+        self.assertEqual([x.startTime for x in G.V], [0, 37])
+        self.assertEqual([x.finishTime for x in G.V], [10,45])
         self.assertEqual([processor.val for processor in G.P.processorList[0].taskList], ["v1"])
         self.assertEqual([processor.val for processor in G.P.processorList[1].taskList], ["v2"])
 
+    def testGraphAfterProcessingFunctions7(self):
+        G = makeGraph7()
+        self.assertEqual(ceil(totalCost(G.P)), 176)
+        self.assertEqual([x.startTime for x in G.V], [0, 16, 7, 16, 18, 23, 43, 45, 46, 74])
+        self.assertEqual([x.finishTime for x in G.V],[7, 19, 16, 23, 30, 30, 52, 49, 57, 79])
+        self.assertEqual([processor.val for processor in G.P.processorList[0].taskList], ["v5", "Slot", "v7"])
+        self.assertEqual([processor.val for processor in G.P.processorList[1].taskList], ["v1", "v2", "v3", "v6", "Slot", "v9"])
+        self.assertEqual([processor.val for processor in G.P.processorList[2].taskList], ["v4", "Slot", "v8", "Slot", "v10"])
 
 if __name__ == "__main__":
     unittest.main()

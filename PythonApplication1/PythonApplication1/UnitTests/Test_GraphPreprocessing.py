@@ -4,11 +4,8 @@ import os
 sys.path.insert(0, os.getcwd())
 
 from Graph.GraphPreprocessing import *
-from Graph.MakeGraphVariations import *
+from Graph.MakeGraphVariationsTest import *
 import unittest
-
-#   Moraju se prethodno zakomentarisati pozivi funkcije updateGraph u svakom od
-#   Grafova u MakeGraphVariations modulu da bi unit testing bio ispravan
 
 class TestGraphPreprocessing(unittest.TestCase):
 
@@ -67,14 +64,11 @@ class TestGraphPreprocessing(unittest.TestCase):
 
     #Prolog: -> doc: slika 6
     #Epilog: -> doc: slika 6-simplified
-    #      Vertex v1 se sjedinjuje sa vertexom v2 pod nazivom vertexa v2,
-    #      Vertex v4 se sjedinjuje sa vertexom v7 pod nazivom vertexa v7
+    #      Nema promene
      def testPreprocessingGraph6(self):
          G = makeGraph6()
          simplifyGraph(G)
-         self.assertEqual([x.val for x in G.V], ['v2','v3','v5','v6','v7','v8','v9','v10','v11','v12'])
-         self.assertEqual([x.first.val for x in G.E], ['v3','v5','v7','v7','v10','v10','v2','v3','v5'])
-         self.assertEqual([x.second.val for x in G.E], ['v6','v8','v9','v10','v11','v12','v7','v7','v7'])
+         self.assertEqual([x.val for x in G.V], ['v1','v2','v3','v4','v5','v6','v7','v8','v9','v10','v11','v12'])
 
     #Prolog: -> doc: slika 7
     #Epilog: -> doc: slika 7-simplified

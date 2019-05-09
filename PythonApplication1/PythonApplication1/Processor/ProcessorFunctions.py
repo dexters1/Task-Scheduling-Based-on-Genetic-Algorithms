@@ -146,9 +146,12 @@ def vmCost(processor):
 #   idle-time if no tasks are being processed
 def addSlot(G):
     for processor in G.P.processorList:
-        for i in range(0,len(processor.taskList)-1):
-            if processor.taskList[i].finishTime != processor.taskList[i+1].startTime:
-                processor.taskList.insert(i+1,Slot(processor.taskList[i].finishTime,processor.taskList[i+1].startTime))
+        L = processor.taskList[:] #pravim kopiju liste da mogu da je menjam
+        c = 1 #iterator broja dodatih slotova da kopija prati original
+        for i in range(0,len(L)-1):
+            if L[i].finishTime != L[i+1].startTime:
+                processor.taskList.insert(i+c,Slot(L[i].finishTime,L[i+1].startTime))
+                c = c + 1
 
 # Input args:
 #   Processor, Vertex

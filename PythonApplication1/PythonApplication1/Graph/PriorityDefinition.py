@@ -21,11 +21,11 @@ def priorityDefinition(G):
 
     # if there is a vertex in graph with no predecessors asign it priority of inf,
     # and if there is a vertex in graph with no successors asign it priority of 0
-    for vertex in G.V:
-        if len(vertex.predecessors) == 0:
-            vertex.priority = inf
-        if len(vertex.successors) == 0:
-            vertex.priority = 0
+#    for vertex in G.V:
+#        if len(vertex.predecessors) == 0:
+#            vertex.priority = inf
+#        if len(vertex.successors) == 0:
+#            vertex.priority = 0
  
     sortGraphByPriority(G)
 
@@ -121,8 +121,6 @@ def graphDepthHelperFunction(n, vertex, G):
 #   No error handling if Graph isn't correct
 def sortGraphByPriority(G):
     defineGraphDepth(G)
-    #Kad sortiram reve
     G.V.sort(key=lambda x: x.priority, reverse=True)
-#    G.V.sort(key=lambda x: (x.depth, x.priority), reverse=False)
     G.V.sort(key=lambda x: x.depth, reverse=False)
     

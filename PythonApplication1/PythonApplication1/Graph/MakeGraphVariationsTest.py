@@ -34,7 +34,7 @@ def makeGraph1():
 
     G = Graph(vertex, edges, P)
 
-    updateGraph(G)
+    
 
     return G
 
@@ -60,7 +60,7 @@ def makeGraph2():
 
     G = Graph(vertex, edges, P)
     
-    updateGraph(G)
+    
 
     return G
 
@@ -94,7 +94,7 @@ def makeGraph3():
 
     G = Graph(vertex, edges, P)
 
-    updateGraph(G)
+    
 
     return G
 
@@ -124,7 +124,7 @@ def makeGraph4():
 
     G = Graph(vertex, edges, P)
 
-    updateGraph(G)
+    
 
     return G
 
@@ -164,7 +164,7 @@ def makeGraph5():
 
     G = Graph(vertex, edges, P)
 
-    updateGraph(G)
+    
 
     return G
 
@@ -213,7 +213,7 @@ def makeGraph6():
 
     G = Graph(vertex, edges, P)
 
-    updateGraph(G)
+    
 
     return G
 
@@ -224,40 +224,40 @@ def makeGraph7():
     p3 = Processor(capacity=3, val="p3")
     P = ProcessorList([p1,p2,p3])
 
-    v1 = Vertex("v1", 13, p2)
-    v2 = Vertex("v2", 17, p2)
-    v3 = Vertex("v3", 14, p2)
-    v4 = Vertex("v4", 9, p3)
-    v5 = Vertex("v5", 12, p1)
-    v6 = Vertex("v6", 13, p2)
-    v7 = Vertex("v7", 11, p1)
-    v8 = Vertex("v8", 10, p3)
-    v9 = Vertex("v9", 17, p2)
-    v10 = Vertex("v10", 15, p3)
+    v1 = Vertex("v1", 10, p2)
+    v2 = Vertex("v2", 15, p2)
+    v3 = Vertex("v3", 23, p2)
+    v4 = Vertex("v4", 11, p3)
+    v5 = Vertex("v5", 21, p1)
+    v6 = Vertex("v6", 3, p2)
+    v7 = Vertex("v7", 17, p1)
+    v8 = Vertex("v8", 7, p3)
+    v9 = Vertex("v9", 13, p2)
+    v10 = Vertex("v10", 12, p3)
 
     vertex = [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10]
 
     edges = []
 
-    edges.append(Edge(v1, v2, 18))
-    edges.append(Edge(v1, v3, 12))
-    edges.append(Edge(v1, v4, 9))
-    edges.append(Edge(v1, v5, 11))
-    edges.append(Edge(v1, v6, 14))
-    edges.append(Edge(v2, v8, 19))
-    edges.append(Edge(v2, v9, 16))
-    edges.append(Edge(v3, v7, 23))
-    edges.append(Edge(v4, v8, 27))
-    edges.append(Edge(v4, v9, 23))
-    edges.append(Edge(v5, v9, 13))
-    edges.append(Edge(v6, v8, 15))
-    edges.append(Edge(v7, v10, 17))
-    edges.append(Edge(v8, v10, 11))
-    edges.append(Edge(v9, v10, 13))
+    edges.append(Edge(v1, v2))
+    edges.append(Edge(v1, v3))
+    edges.append(Edge(v1, v4))
+    edges.append(Edge(v1, v5))
+    edges.append(Edge(v1, v6))
+    edges.append(Edge(v2, v8))
+    edges.append(Edge(v2, v9))
+    edges.append(Edge(v3, v7))
+    edges.append(Edge(v4, v8))
+    edges.append(Edge(v4, v9))
+    edges.append(Edge(v5, v9))
+    edges.append(Edge(v6, v8))
+    edges.append(Edge(v7, v10))
+    edges.append(Edge(v8, v10))
+    edges.append(Edge(v9, v10))
 
     G = Graph(vertex, edges, P)
 
-    updateGraph(G)
+    
 
     return G
 
@@ -315,7 +315,7 @@ def makeGraph8():
 
     G = Graph(vertex, edges, P)
 
-    updateGraph(G)
+    
 
     return G
 
@@ -385,52 +385,6 @@ def makeGraph9():
 
     G = Graph(vertex, edges, P)
 
-    updateGraph(G)
+    
 
     return G
-
-def makeGraphTest():
-
-    p1 = Processor(capacity=1, val="p1")
-    p2 = Processor(capacity=2, val="p2")
-    p3 = Processor(capacity=3, val="p3")
-    P = ProcessorList([p1,p2,p3])
-
-    v1 = Vertex("v1", 10, p2)
-    v2 = Vertex("v2", 15, p2)
-    v3 = Vertex("v3", 23, p2)
-    v4 = Vertex("v4", 11, p3)
-    v5 = Vertex("v5", 21, p1)
-    v6 = Vertex("v6", 3, p2)
-    v7 = Vertex("v7", 17, p1)
-    v8 = Vertex("v8", 7, p3)
-    v9 = Vertex("v9", 13, p2)
-    v10 = Vertex("v10", 12, p3)
-
-    vertex = [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10]
-
-    edges = []
-
-    edges.append(Edge(v1, v2))
-    edges.append(Edge(v1, v3))
-    edges.append(Edge(v1, v4))
-    edges.append(Edge(v1, v5))
-    edges.append(Edge(v1, v6))
-    edges.append(Edge(v2, v8))
-    edges.append(Edge(v2, v9))
-    edges.append(Edge(v3, v7))
-    edges.append(Edge(v4, v8))
-    edges.append(Edge(v4, v9))
-    edges.append(Edge(v5, v9))
-    edges.append(Edge(v6, v8))
-    edges.append(Edge(v7, v10))
-    edges.append(Edge(v8, v10))
-    edges.append(Edge(v9, v10))
-
-    G = Graph(vertex, edges, P)
-
-    updateGraph(G)
-
-    return G
-
-
