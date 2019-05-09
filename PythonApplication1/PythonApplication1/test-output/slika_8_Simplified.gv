@@ -1,24 +1,24 @@
 digraph {
-	v5 [label="v5
-w:31|st:None|ft:None|p2" fontsize=8.0]
 	v6 [label="v6
-w:18|st:None|ft:None|p1" fontsize=8.0]
+w:18|depth:1|priority:181|p1" fontsize=8.0]
+	v5 [label="v5
+w:31|depth:1|priority:179|p2" fontsize=8.0]
 	v7 [label="v7
-w:40|st:None|ft:None|p2" fontsize=8.0]
+w:40|depth:1|priority:175|p2" fontsize=8.0]
 	v8 [label="v8
-w:18|st:None|ft:None|p3" fontsize=8.0]
+w:18|depth:1|priority:159|p3" fontsize=8.0]
 	v9 [label="v9
-w:13|st:None|ft:None|p1" fontsize=8.0]
-	v14 [label="v14
-w:15|st:None|ft:None|p2" fontsize=8.0]
-	v15 [label="v15
-w:40|st:None|ft:None|p3" fontsize=8.0]
+w:13|depth:2|priority:563|p1" fontsize=8.0]
 	v16 [label="v16
-w:24|st:None|ft:None|p1" fontsize=8.0]
+w:24|depth:4|priority:83|p1" fontsize=8.0]
+	v15 [label="v15
+w:40|depth:4|priority:75|p3" fontsize=8.0]
 	v17 [label="v17
-w:34|st:None|ft:None|p2" fontsize=8.0]
+w:34|depth:4|priority:63|p2" fontsize=8.0]
+	v14 [label="v14
+w:15|depth:4|priority:57|p2" fontsize=8.0]
 	v18 [label="v18
-w:12|st:None|ft:None|p3" fontsize=8.0]
+w:12|depth:5|priority:0|p3" fontsize=8.0]
 	v5 -> v9 [label=18 constraint=true fontsize=6.0]
 	v6 -> v9 [label=28 constraint=true fontsize=6.0]
 	v7 -> v9 [label=18 constraint=true fontsize=6.0]
@@ -27,8 +27,8 @@ w:12|st:None|ft:None|p3" fontsize=8.0]
 	v15 -> v18 [label=23 constraint=true fontsize=6.0]
 	v16 -> v18 [label=29 constraint=true fontsize=6.0]
 	v17 -> v18 [label=19 constraint=true fontsize=6.0]
-	v9 -> v14 [label=15 constraint=true fontsize=6.0]
+	v9 -> v17 [label=19 constraint=true fontsize=6.0]
 	v9 -> v15 [label=15 constraint=true fontsize=6.0]
 	v9 -> v16 [label=26 constraint=true fontsize=6.0]
-	v9 -> v17 [label=19 constraint=true fontsize=6.0]
+	v9 -> v14 [label=15 constraint=true fontsize=6.0]
 }

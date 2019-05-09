@@ -94,7 +94,7 @@ def makeGraph3():
 
     G = Graph(vertex, edges, P)
 
-    #updateGraph(G)
+    updateGraph(G)
 
     return G
 
@@ -213,7 +213,7 @@ def makeGraph6():
 
     G = Graph(vertex, edges, P)
 
-    #updateGraph(G)
+    updateGraph(G)
 
     return G
 
@@ -315,7 +315,7 @@ def makeGraph8():
 
     G = Graph(vertex, edges, P)
 
-    #updateGraph(G)
+    updateGraph(G)
 
     return G
 
@@ -385,6 +385,6 @@ def makeGraph9():
 
     G = Graph(vertex, edges, P)
 
-    #updateGraph(G)
+    updateGraph(G)
 
     return G

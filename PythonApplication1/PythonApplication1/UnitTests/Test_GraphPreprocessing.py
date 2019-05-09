@@ -1,7 +1,14 @@
 import sys
+import os
+
+sys.path.insert(0, os.getcwd())
+
 from Graph.GraphPreprocessing import *
 from Graph.MakeGraphVariations import *
 import unittest
+
+#   Moraju se prethodno zakomentarisati pozivi funkcije updateGraph u svakom od
+#   Grafova u MakeGraphVariations modulu da bi unit testing bio ispravan
 
 class TestGraphPreprocessing(unittest.TestCase):
 

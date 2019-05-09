@@ -6,9 +6,7 @@ from Graph.GraphPreprocessing import *
 from Graph.MakeGraphVariations import *
 
 # ToDo:
-# - Ceil-uj na vise
 # - Sredi unit testing za ProcessorFunctions
-# - Sredi dubinu i sortiranje po dubini
 
 vmBasePrice = 0.1 
 #0.0475
@@ -25,7 +23,7 @@ vmBaseSpeed = 1.0
 # Issues:
 #   - No error handling if input isn't correct
 def startTime(G, vertex):
-    return max(availableProcessorForTask(G, vertex),max(predecessorTime(G, vertex)))
+    return ceil(max(availableProcessorForTask(G, vertex),max(predecessorTime(G, vertex))))
 
 # Input args:
 #   Graph, Vertex
@@ -178,6 +176,12 @@ def totalCost(processorList):
             n += cost(processor,task)
     return n 
 
+# Input args:
+#   Graph
+# output args:
+#   No output args
+# Description: 
+#    Updates process taskList after Graph has been sorted by priority
 def updateProcessorTaskList(G):
     for process in G.P.processorList:
         process.taskList = []

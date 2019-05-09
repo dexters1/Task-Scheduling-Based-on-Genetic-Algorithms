@@ -73,12 +73,33 @@ def communicationCostOfSuccesors(G, vertex):
         n += getEdgeWeight(G, vertex, successor)
     return n
 
+# Input args:
+#   Graph, Vertex
+# output args:
+#   No output args
+# Description: 
+#   Defines depth for each vertex in Graph. Assings 0 depth for each
+#   vertex without predecessors then calls it's helper function 
+#   graphDepthHelperFunction
+# Issues/Bugs:
+#   Predecessors must be assigned properly in Graph before calling the function
 def defineGraphDepth(G):
     n = 0
-    vertex = G.V[0]
-    vertex.depth = 0
-    graphDepthHelperFunction(n, vertex, G)
+    for vertex in G.V:
+        if len(vertex.predecessors) == 0:
+            vertex.depth = 0
+            graphDepthHelperFunction(n, vertex, G)
 
+# Input args:
+#   Int(starting depth), Graph, Vertex
+# output args:
+#   No output args
+# Description: 
+#   Helper function for defineGraphDepth, not to be used outside the 
+#   priorityDefinitionHeft function. Increments then assings depth to
+#   successors and calls itself for each succesors 
+# Issues/Bugs:
+#   No error handling if Graph isn't correct
 def graphDepthHelperFunction(n, vertex, G):
     c = n + 1
     for successor in vertex.successors:
@@ -88,8 +109,6 @@ def graphDepthHelperFunction(n, vertex, G):
             successor.depth = c
     for successor in vertex.successors:
          graphDepthHelperFunction( c, successor, G)
-
-
 
 
 # Input args:
@@ -102,13 +121,8 @@ def graphDepthHelperFunction(n, vertex, G):
 #   No error handling if Graph isn't correct
 def sortGraphByPriority(G):
     defineGraphDepth(G)
-    print("Prio:")
-    print([x.val for x in G.V])
-    print([x.depth for x in G.V])
-    print("prio end")
-    G.V.sort(key=lambda x: (x.depth, x.priority), reverse=False)
-    print("Prio sort:")
-    print([x.val for x in G.V])
-    print([x.depth for x in G.V])
-    print("prio sort end")
+    #Kad sortiram reve
+    G.V.sort(key=lambda x: x.priority, reverse=True)
+#    G.V.sort(key=lambda x: (x.depth, x.priority), reverse=False)
+    G.V.sort(key=lambda x: x.depth, reverse=False)
     

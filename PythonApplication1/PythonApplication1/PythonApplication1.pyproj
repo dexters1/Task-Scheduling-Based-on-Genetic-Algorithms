@@ -47,14 +47,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PythonApplication1.py" />
-    <Compile Include="Test_GraphPreprocessing.py" />
-    <Compile Include="Test_ProcessorFunctions.py">
+    <Compile Include="UnitTests\Test_GraphPreprocessing.py" />
+    <Compile Include="UnitTests\Test_ProcessorFunctions.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UnitTests\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graph\" />
     <Folder Include="Processor\" />
+    <Folder Include="UnitTests\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
