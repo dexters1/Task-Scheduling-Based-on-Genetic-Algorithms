@@ -206,7 +206,6 @@ def makeGraph6():
     edges.append(Edge(v4, v7))
     edges.append(Edge(v7, v9))
     edges.append(Edge(v7, v10))
-    edges.append(Edge(v9, v11))
     edges.append(Edge(v10, v11))
     edges.append(Edge(v10, v12))
     edges.append(Edge(v11, v12))

@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b5c6546d-0b94-4763-b0ec-80e554d3f255</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>UnitTests\Test_ProcessorFunctions.py</StartupFile>
+    <StartupFile>PythonApplication1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

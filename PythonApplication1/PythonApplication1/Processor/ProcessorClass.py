@@ -5,10 +5,11 @@ class ProcessorList:
         self.processorList = processorList
 
 class Slot:
-    def __init__(self,startTime,finishTime):
+    def __init__(self,startTime,finishTime, noCost=False, val="Slot"):
         self.startTime = startTime
         self.finishTime = finishTime
-        self.val = "Slot"
+        self.noCost = noCost
+        self.val = val
 
 class Processor:
     def __init__(self, taskList=[], capacity=0, val="None"):

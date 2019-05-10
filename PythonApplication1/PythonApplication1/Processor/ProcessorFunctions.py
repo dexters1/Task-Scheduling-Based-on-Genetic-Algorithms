@@ -152,6 +152,21 @@ def addSlot(G):
             if L[i].finishTime != L[i+1].startTime:
                 processor.taskList.insert(i+c,Slot(L[i].finishTime,L[i+1].startTime))
                 c = c + 1
+        addNoCostSlot(processor)
+
+# Input args:
+#   Processor
+# output args:
+#   No output args
+# Description: 
+#   Adds an element of type slot with no cost if the start time of
+#   processor.taskList isn't 0 to denote free processor space which
+#   isn't charged, needed for duplication of tasks
+def addNoCostSlot(processor):
+    if len(processor.taskList) == 0:
+        return
+    if not (processor.taskList[0].startTime == 0):
+        processor.taskList.insert(0, Slot(0, processor.taskList[0].startTime, noCost=True, val="NoCostSlot"))
 
 # Input args:
 #   Processor, Vertex
@@ -163,6 +178,8 @@ def addSlot(G):
 def cost(processor, vertex):
     if not isinstance(vertex,Slot):
         return vmCost(processor)*calculateETC(vertex.weight, processor)
+    if vertex.noCost == True:
+        return 0
     return vmCost(processor)*(vertex.finishTime - vertex.startTime)
 
 # Input args:
