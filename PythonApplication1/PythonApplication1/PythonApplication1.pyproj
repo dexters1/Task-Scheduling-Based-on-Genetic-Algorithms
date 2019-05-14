@@ -22,6 +22,18 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GeneticAlgorithm\fitnessFunction.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GeneticAlgorithm\geneticOperations.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GeneticAlgorithm\populationInitialization.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GeneticAlgorithm\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Graph\DrawGraph.py">
       <SubType>Code</SubType>
     </Compile>
@@ -61,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graph\" />
+    <Folder Include="GeneticAlgorithm\" />
     <Folder Include="Processor\" />
     <Folder Include="UnitTests\" />
   </ItemGroup>

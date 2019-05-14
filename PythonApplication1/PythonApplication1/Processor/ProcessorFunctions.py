@@ -207,3 +207,16 @@ def updateProcessorTaskList(G):
         process.taskList = []
     for vertex in G.V:
         vertex.processor.taskList.append(vertex)
+
+# Input args:
+#   Graph
+# output args:
+#   No output args
+# Description: 
+#    Updates all necessary info for Processor if changes are made to vertex
+#    processor assignment
+def updateProcessorInfo(G):
+    updateProcessorTaskList(G)
+    updateStartTime(G)
+    updateFinishTime(G)
+    addSlot(G)

@@ -29,4 +29,5 @@ class Graph:
         self.V = V
         self.E = E
         self.P = P
+        self.fitness = None
  

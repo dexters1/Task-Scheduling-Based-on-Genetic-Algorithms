@@ -21,6 +21,13 @@ class TestProcessorFunctions(unittest.TestCase):
 
     def testGraphAfterProcessingFunctions7(self):
         G = makeGraph7()
+        drawGraph(G, "testGraphAfterProcessingFunctions7.gv")
+        # Testiramo da li graf 7 ima dobro izracunatu totalnu cenu, vreme
+        # pocetka i kraja obrade svih vertexa i da li je dobra raspodela
+        # taskova po procesorima. Raspored taskova je prethodno odredjen 
+        # sortiranjem pomocu prioriteta taskova u odnosu na dubinu.
+        # Slika grafa 7 na kojim je vrsena analiza se nalazi u test-output
+        # folderu pod imenom testGraphAfterProcessingFunctions7.gv.pdf
         self.assertEqual(ceil(totalCost(G.P)), 176)
         self.assertEqual([x.startTime for x in G.V], [0, 16, 7, 16, 18, 23, 43, 45, 46, 74])
         self.assertEqual([x.finishTime for x in G.V],[7, 19, 16, 23, 30, 30, 52, 49, 57, 79])
