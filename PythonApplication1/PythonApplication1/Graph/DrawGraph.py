@@ -19,7 +19,7 @@ def drawGraph(G, fileName):
 
     dot = Digraph()
     for vertex in G.V:
-        nodeName = vertex.val + "\n" + "w:" + str(vertex.weight) + "|" + "pri:"+str(vertex.priority) + "|"+"st:"+str(vertex.startTime)+"|"+"ft:"+str(vertex.finishTime)+"|"+str(vertex.processor.val) 
+        nodeName = vertex.val + "\n" + "w:" + str(vertex.weight) + "|" + "pri:"+str(vertex.priority) + "|"+"st:"+str(round(vertex.startTime,2))+"|"+"ft:"+str(round(vertex.finishTime,2))+"|"+str(vertex.processor.val) 
         dot.node(vertex.val, nodeName, fontsize=str(8.0))
     for edge in G.E:
         dot.edge(edge.first.val, edge.second.val,label=str(edge.weight), fontsize=str(6.0),constraint='true')
@@ -50,3 +50,13 @@ def drawAllGraphs(i):
 
            fileNameSimplified = "slika_" + str(iter) + "_Simplified.gv"	
            drawGraph(G,fileNameSimplified)
+
+def drawMpGraph(mP):
+    i = -1
+    j = -1
+    for population in mP:
+        i = i + 1
+        for individual in population.individualList:
+            j = j + 1
+            fileName = "multiPopulationTest/mP_" + str(i) + "_" + str(j) + ".gv"
+            drawGraph(individual, fileName)

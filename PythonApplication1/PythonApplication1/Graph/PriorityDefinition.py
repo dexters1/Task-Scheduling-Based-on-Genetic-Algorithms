@@ -55,7 +55,7 @@ def heftHelperFunction(G, vertex):
         L = [0]
         return L
     for successor in vertex.successors:
-        L.append(getEdgeWeight(G, vertex, successor) + priorityDefinitionHeft(G, successor))
+        L.append(getWeight(G, vertex, successor) + priorityDefinitionHeft(G, successor)) #I OVDE OBRATI PAZNJU DA LI JE NA ISTOM PROCESORU
     return L
 
 # Input args:
@@ -70,8 +70,16 @@ def heftHelperFunction(G, vertex):
 def communicationCostOfSuccesors(G, vertex):
     n = 0
     for successor in vertex.successors[::-1]:
-        n += getEdgeWeight(G, vertex, successor)
+            n += getWeight(G, vertex, successor)
     return n
+    #Da li treba da obratim paznju da li su na istom procesoru? Jer ako jesu smanjila bi se cena komunikacije
+
+def getWeight(G, vertex, successor):
+    if vertex.processor == successor.processor:
+        weight = 0
+    else:
+        weight = getEdgeWeight(G, vertex, successor)
+    return weight
 
 # Input args:
 #   Graph, Vertex

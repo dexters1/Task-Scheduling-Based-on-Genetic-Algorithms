@@ -22,13 +22,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GeneticAlgorithm\fitnessFunction.py">
+    <Compile Include="GeneticAlgorithm\GeneticAlgorithmClasses.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GeneticAlgorithm\geneticOperations.py">
+    <Compile Include="GeneticAlgorithm\GeneticAlgorithmFunctions.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GeneticAlgorithm\populationInitialization.py">
+    <Compile Include="GeneticAlgorithm\GeneticOperations.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GeneticAlgorithm\PopulationInitialization.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GeneticAlgorithm\__init__.py">

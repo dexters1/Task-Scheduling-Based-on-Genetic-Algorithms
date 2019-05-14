@@ -30,4 +30,6 @@ class Graph:
         self.E = E
         self.P = P
         self.fitness = None
+        self.totalTime = None
+        self.cost = None
  

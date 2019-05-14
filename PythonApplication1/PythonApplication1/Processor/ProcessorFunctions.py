@@ -23,7 +23,7 @@ vmBaseSpeed = 1.0
 # Issues:
 #   - No error handling if input isn't correct
 def startTime(G, vertex):
-    return ceil(max(availableProcessorForTask(G, vertex),max(predecessorTime(G, vertex))))
+    return max(availableProcessorForTask(G, vertex),max(predecessorTime(G, vertex)))
 
 # Input args:
 #   Graph, Vertex
@@ -53,9 +53,7 @@ def predecessorTime(G, vertex):
 # Issues:
 #   - No error handling if input isn't correct
 def finishTime(G, vertex):
-    if vertex.startTime == None:
-        return startTime(G, vertex) + calculateETC(vertex.weight, vertex.processor)
-    return vertex.startTime + calculateETC(vertex.weight, vertex.processor)
+    return startTime(G, vertex) + calculateETC(vertex.weight, vertex.processor)
 
 # Input args:
 #   Int, Int
@@ -66,7 +64,7 @@ def finishTime(G, vertex):
 # Issues:
 #   - Treba videti da li treba broj zaokruziti navise sa ceil-om
 def calculateETC(time, processor):
-    return ceil(time/processor.capacity) 
+    return time/processor.capacity 
 
 # Input args:
 #   Graph, Vertex, Vertex
@@ -101,11 +99,7 @@ def availableProcessorForTask(G, vertex):
         if iter == vertex:
             return n
         if not (isinstance(iter, Slot)): #if not idle time
-            #n = finishTime(G, iter)
-            if iter.finishTime == None:
-                n = finishTime(G, iter)
-            else:
-                n = iter.finishTime
+             n = finishTime(G, iter)
     return n
 
 # Input args:
@@ -177,10 +171,10 @@ def addNoCostSlot(processor):
 #   time it just multiplies the price per unit of time with the idle time
 def cost(processor, vertex):
     if not isinstance(vertex,Slot):
-        return vmCost(processor)*calculateETC(vertex.weight, processor)
+        return vmCost(processor)*ceil(calculateETC(vertex.weight, processor))
     if vertex.noCost == True:
         return 0
-    return vmCost(processor)*(vertex.finishTime - vertex.startTime)
+    return vmCost(processor)*ceil((vertex.finishTime - vertex.startTime))
 
 # Input args:
 #   ProcessorList

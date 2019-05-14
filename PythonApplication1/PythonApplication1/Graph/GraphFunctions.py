@@ -138,3 +138,15 @@ def updateGraph(G):
     Processor.ProcessorFunctions.updateStartTime(G)
     Processor.ProcessorFunctions.updateFinishTime(G)
     Processor.ProcessorFunctions.addSlot(G)
+
+
+def totalTime(G):
+    depth = G.V[-1].depth
+    totalTime = G.V[-1].finishTime
+    i = -1
+    while G.V[i].depth == depth:
+        if totalTime < G.V[i].finishTime:
+            totalTime = G.V[i].finishTime
+        i = i - 1
+    G.totalTime = totalTime
+    return totalTime
