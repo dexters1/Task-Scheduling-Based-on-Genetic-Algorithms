@@ -34,4 +34,21 @@ def updateSelectionNumber(mP):
         for individual in population.individualList:
             individual.selectionNumber = NIND*(individual.fitness/population.fitnessSum)
 
+def numberOfSelectionIndividualsForPopulation(population):
+    sumN = 0
+    for i in range(0, len(population.individualList)):
+        if(population.individualList[i].selectionNumber < 1):
+            sumN += population.individualList[i].selectionNumber
+        else:
+            sumN += (population.individualList[i].selectionNumber % 1)
+    return round(sumN)
+
+def matingPool(population):
+    population.individualList.sort(key=lambda x: x.selectionNumber, reverse=True)
+    L = []
+    selectionNum = numberOfSelectionIndividualsForPopulation(population)
+    for i in range(0,selectionNum):
+        L.append(population.individualList[i])
+    return L
+
 
