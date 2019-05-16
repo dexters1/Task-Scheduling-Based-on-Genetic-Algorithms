@@ -32,4 +32,5 @@ class Graph:
         self.fitness = None
         self.totalTime = None
         self.cost = None
+        self.selectionNumber = None
  

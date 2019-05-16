@@ -24,3 +24,14 @@ def updateFitness(mP):
     for population in mP:
         for individual in population.individualList:
             fitnessFunction(population, individual)
+        population.fitnessSum = 0
+        for individual in population.individualList:
+            population.fitnessSum += individual.fitness
+        population.fitnessAverage = population.fitnessSum/NIND
+
+def updateSelectionNumber(mP):
+    for population in mP:
+        for individual in population.individualList:
+            individual.selectionNumber = NIND*(individual.fitness/population.fitnessSum)
+
+
