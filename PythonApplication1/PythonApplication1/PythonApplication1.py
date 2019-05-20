@@ -2,7 +2,7 @@ import sys
 from Graph.GraphPreprocessing import *
 from Graph.DrawGraph import *
 from Processor.ProcessorFunctions import*
-from GeneticAlgorithm.populationInitialization import *
+from GeneticAlgorithm.PopulationInitialization import *
 from GeneticAlgorithm.GeneticOperations import *
 
 if __name__ == "__main__":
@@ -12,6 +12,19 @@ if __name__ == "__main__":
 
     updateFitness(mP)
     updateSelectionNumber(mP)
+    print(mP.fittestIndividual.fitness)       
+        
+    #newGeneration(mP)
+
+    #for population in mP.populationList:
+    #    print("Population: " + str(j))
+    #    j = j + 1
+    #    print(population.minCost, population.minTime)
+
+    for i in range(0, 10):
+        newGeneration(mP)
+
+    drawGraph(mP.fittestIndividual, "multiPopulationFittest/lastGeneration")
 
     #print( [x.selectionNumber for x in matingPool(mP[0])])
 
@@ -21,13 +34,13 @@ if __name__ == "__main__":
     #for vertex in mP[0].individualList[1].V:
     #    print(vertex.val + " " + vertex.processor.val)
 
-    child = crossoverOperation(mP[0].individualList[0], mP[0].individualList[1])
+#    child = crossoverOperation(mP.populationList[0].individualList[0], mP.populationList[0].individualList[1])
 
-    for processor in child.P.processorList:
-        print(processor)
-
-    for vertex in child.V:
-        print(vertex.val + " " + str(vertex.processor.val))
+#    for processor in child.P.processorList:
+#        print(processor)
+#
+#    for vertex in child.V:
+#        print(vertex.val + " " + str(vertex.processor.val))
 
   #  for vertex in child.V:
   #      print(vertex.val + " " + vertex.processor.val)
@@ -37,10 +50,24 @@ if __name__ == "__main__":
   #      print(int(x.val[1::]))
   #  verteciasd.sort(key=lambda x: int(x[1::]), reverse=True)
   #  print(verteciasd)
- #   for i in range(0, len(mP[0].individualList)):
- #       print(mP[0].individualList[i].fitness)
- #   print(mP[0].fitnessSum)
 
+#    for processor in mP.populationList[0].individualList[6].P.processorList:
+#        print(processor)
+#
+#    for vertex in mP.populationList[0].individualList[6].V:
+#        print(vertex.val + " " + str(vertex.processor.val))
+
+#    for individual in mP.populationList[0].individualList:
+#    mutateIndividual(mP.populationList[0], mP.populationList[0].individualList[6])
+
+#    print("AFTER")
+#    for processor in mP.populationList[0].individualList[6].P.processorList:
+#        print(processor)
+
+#    for vertex in mP.populationList[0].individualList[6].V:
+#        print(vertex.val + " " + str(vertex.processor.val))
+
+ #   print(len(mate(mP.populationList[0])))
 
    # drawMpGraph(mP)
 

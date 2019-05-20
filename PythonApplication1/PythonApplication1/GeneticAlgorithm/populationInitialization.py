@@ -22,10 +22,13 @@ def initialPopulation(popSize, G):
     for i in range(0, popSize):
         population.individualList.append(createIndividual(G))
     updatePopulationInfo(population)
+    population.fittestIndividual = population.individualList[0]
     return population
 
 def initialMultiPopulation(multiPopSize, popSize, G):
-    multiPopulation = []
+    multiPopulation = MultiPopulation([])
     for i in range(0,multiPopSize):
-        multiPopulation.append(initialPopulation(popSize, G))
+        multiPopulation.populationList.append(initialPopulation(popSize, G))
+    multiPopulation.fittestIndividual = multiPopulation.populationList[0].individualList[0]
+    multiPopulation.fittestIndividual.fitness = fitnessFunction(multiPopulation.populationList[0], multiPopulation.populationList[0].individualList[0])
     return multiPopulation
