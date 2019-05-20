@@ -21,7 +21,7 @@ if __name__ == "__main__":
     #    j = j + 1
     #    print(population.minCost, population.minTime)
 
-    for i in range(0, 10):
+    for i in range(0, 100):
         newGeneration(mP)
 
     drawGraph(mP.fittestIndividual, "multiPopulationFittest/lastGeneration")

@@ -24,3 +24,7 @@ class MultiPopulation:
         self.populationList = populationList
         self.fittestIndividual = None
         self.numberOfGenerations = 0
+        self.maxTime = 0
+        self.minTime = inf
+        self.maxCost = 0
+        self.minCost = inf

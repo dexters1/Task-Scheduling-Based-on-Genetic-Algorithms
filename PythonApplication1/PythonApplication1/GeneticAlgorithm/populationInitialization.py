@@ -7,6 +7,14 @@ from GeneticAlgorithm.GeneticAlgorithmClasses import *
 from GeneticAlgorithm.GeneticAlgorithmFunctions import *
 import copy
 
+# Input args:
+#   function(makeGraph)
+# output args:
+#   Graph(individual)
+# Description: 
+#   Makes a Graph(individual) from the makeGraph function and randomizes it's
+#   processsors and recalculates priority, processorInfo, totalTime anc cost then
+#   returns the Graph(individual) as output
 def createIndividual(makeGraphSent):
     individual = makeGraphSent()
     for vertex in individual.V:
@@ -17,18 +25,32 @@ def createIndividual(makeGraphSent):
     individual.cost = totalCost(individual.P)
     return individual
 
-def initialPopulation(popSize, G):
+# Input args:
+#   int(populationSize), function(makeGraph)
+# output args:
+#   Population
+# Description: 
+#   Makes an initial population with random processor assignment for individuals
+#   (Graphs) 
+def initialPopulation(popSize, makeGraphSent):
     population = Population([])
     for i in range(0, popSize):
-        population.individualList.append(createIndividual(G))
+        population.individualList.append(createIndividual(makeGraphSent))
     updatePopulationInfo(population)
     population.fittestIndividual = population.individualList[0]
     return population
 
-def initialMultiPopulation(multiPopSize, popSize, G):
+# Input args:
+#   int(multiPopulationSize), int(populationSize), function(makeGraph)
+# output args:
+#   MultiPopulation
+# Description: 
+#   Makes an initial MultiPopulation with random processor assignment for individuals (Graphs) 
+#   in all populations
+def initialMultiPopulation(multiPopSize, popSize, makeGraphSent):
     multiPopulation = MultiPopulation([])
     for i in range(0,multiPopSize):
-        multiPopulation.populationList.append(initialPopulation(popSize, G))
+        multiPopulation.populationList.append(initialPopulation(popSize, makeGraphSent))
     multiPopulation.fittestIndividual = multiPopulation.populationList[0].individualList[0]
     multiPopulation.fittestIndividual.fitness = fitnessFunction(multiPopulation.populationList[0], multiPopulation.populationList[0].individualList[0])
     return multiPopulation

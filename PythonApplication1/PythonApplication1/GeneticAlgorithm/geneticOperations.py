@@ -6,8 +6,14 @@ from GeneticAlgorithm.GeneticAlgorithmFunctions import *
 from Graph.DrawGraph import drawGraph
 import copy
 
-#sorts both parents by vertex value and then crossesover and then updates the child
-def crossoverOperation(parent1, parent2):
+# Input args:
+#   Population, Graph(Parent1), Graph(Parent2)
+# output args:
+#   Graph(Child)
+# Description: 
+#   sorts both parents by vertex value and then crossesovers at crossoverPoint by crossoverLength
+#   and then updates the child by prioritey, processorInfo, totalTime, cost and fitness
+def crossoverOperation(population, parent1, parent2):
     child = copy.deepcopy(parent1)
 
     crossoverLenght = random.randint(0, len(child.V)/2)
@@ -26,21 +32,40 @@ def crossoverOperation(parent1, parent2):
     updateProcessorInfo(child)
     totalTime(child)
     child.cost = totalCost(child.P)
+    fitnessFunction(population, child)
     return child
 
-
+# Input args:
+#   Graph(Child), Graph(Parent)
+# output args:
+#   Processor(ChildProcessor)
+# Description: 
+#   Finds Child's processor by value of Parent's processor.
+#   Meant to be used as a helper function for crossoverOperation
 def findProcessorByVal(childGraph, parentProcessor):
     for processor in childGraph.P.processorList:
         if processor.val == parentProcessor.val:
             return processor
     exit(1)
 
+# Input args:
+#   Population, Graph(individual)
+# output args:
+#   float(probabilityOfMutation)
+# Description: 
+#   Calculates probability of Mutation for given individual
 def probabilityOfMutation(population, individual):
     if individual.fitness >= population.fitnessAverage:
         return k3*(population.fittestIndividual.fitness - individual.fitness)/(population.fittestIndividual.fitness - population.fitnessAverage)
     else:
         return k4
 
+# Input args:
+#   Population, Graph(parent1), Graph(parent2)
+# output args:
+#   float(probabilityOfCrossover)
+# Description: 
+#   Calculates probability of Crossover for given parent combination
 def probabilityOfCrossover(population, parent1, parent2):
     highestParentFitness = max(parent1.fitness, parent2.fitness)
     if highestParentFitness >= population.fitnessAverage:
@@ -48,6 +73,15 @@ def probabilityOfCrossover(population, parent1, parent2):
     else:
         return k2
 
+# Input args:
+#   Population, Graph(individual)
+# output args:
+#   No output
+# Description: 
+#   Calculates probabilityOfMutation for Graph(individual) then for each vertex
+#   in Graph(individual) creates a randomNum between 0 and 1, if the number is
+#   less than the probabilityOfMutation mutate individual ( mutation in this 
+#   function means change the processor assigned to the particular vertex randomly )
 def mutateIndividual(population, individual):
     pM = probabilityOfMutation(population, individual)
     for vertex in individual.V:
@@ -57,26 +91,47 @@ def mutateIndividual(population, individual):
             while vertex.processor == oldProcessor:
                 vertex.processor = random.choice(individual.P.processorList)
 
+
+# Input args:
+#   MultiPopulation, Population
+# output args:
+#   List(ChildList)
+# Description: 
+#   Finds the matePool based on selectionNum with the help of the matingPool 
+#   function. Calculates the number of needed children and then fills the list
+#   of children by crossover with the individuals from the matingPool. 
 def mate(mP, population):
-    matePool = matingPool(population)
-    numberOfChildrenNeeded = NIND - numberOfSelectionIndividualsForPopulation(population) #ovde ce rasti na svakih par generacija malo
+    matePool = matingPool(mP, population)
+    #matePool = population.individualList
+    numberOfChildrenNeeded = NIND - numberOfSelectionIndividualsForPopulation(population) 
     numberOfChildren = 0
     childList = []
     while numberOfChildren != numberOfChildrenNeeded:
-        parentList = random.sample(matePool, 2)
+        if mP.numberOfGenerations>2 and len(matePool) <= 2: #Desi se da budu 3 ista pa se zaglavi u petlji nisam sredio
+            return childList       
+        parentList = random.sample(matePool, 2)      
         randomNum = random.uniform(0,1)
         pC = probabilityOfCrossover(population, parentList[0], parentList[1])
         if pC > randomNum:
             numberOfChildren = numberOfChildren + 1
-            child = crossoverOperation(parentList[0], parentList[1])
+            child = crossoverOperation(population, parentList[0], parentList[1])
             childList.append(child)
-    if not(mP.numberOfGenerations % 5):
-        childList.append(copy.deepcopy(mP.fittestIndividual))
     return childList
 
+
+# Input args:
+#   MultiPopulation
+# output args:
+#   No output
+# Description: 
+#   Creates a newGeneration of multiPopulation. Transferes the selected individuals
+#   from the previous generation to the new generation with the matingPoolList.
+#   Makes a list of children with the mate function and then mutates the children.
+#   In the end update all the individuals with regrads to priority, processorInfo,
+#   totalTime, cost, PopulationInfo, fitness and selectionNumber.
 def newGeneration(mP):
     for population in mP.populationList:
-        matingPoolList = matingPool(population)
+        matingPoolList = matingPool(mP, population)
         childrenList = mate(mP,population) 
         for individual in childrenList:
             mutateIndividual(population, individual)
@@ -84,6 +139,9 @@ def newGeneration(mP):
         population.individualList = []
         population.individualList.extend(matingPoolList)
         population.individualList.extend(childrenList)
+        if mP.numberOfGenerations > 2 and len(childrenList) == 0:
+            print("Selection Converged")
+            population.individualList = []
 
         for individual in population.individualList:
             priorityDefinition(individual)
@@ -94,15 +152,17 @@ def newGeneration(mP):
 
     updateFitness(mP)
     updateSelectionNumber(mP)
+    updateMultiPopulationInfo(mP)
+    fittestIndividual = returnFittestIndividual(mP)
 
 
     mP.numberOfGenerations = mP.numberOfGenerations + 1
     print("Generation: " + str(mP.numberOfGenerations))
-    print("Max fitness: " + str(mP.fittestIndividual.fitness))
-    print("Min Cost: " + str(mP.populationList[0].minCost))
-    print("Max Cost: " + str(mP.populationList[0].maxCost))
-    print("Min Time: " + str(mP.populationList[0].minTime))
-    print("Max Time: " + str(mP.populationList[0].maxTime))
-    print("Fittest Individual Cost: " + str(mP.fittestIndividual.cost))
-    print("Fittest Individual Time: " + str(mP.fittestIndividual.totalTime))
+    print("Max fitness: " + str(fittestIndividual.fitness))
+    print("Min Cost: " + str(mP.minCost))
+    print("Max Cost: " + str(mP.maxCost))
+    print("Min Time: " + str(mP.minTime))
+    print("Max Time: " + str(mP.maxTime))
+    print("Fittest Individual Cost: " + str(fittestIndividual.cost))
+    print("Fittest Individual Time: " + str(fittestIndividual.totalTime))
     print("\n")
