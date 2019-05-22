@@ -65,6 +65,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PythonApplication1.py" />
+    <Compile Include="TaskDuplication\TaskDuplicationFunctions.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TaskDuplication\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="UnitTests\Test_GraphPreprocessing.py" />
     <Compile Include="UnitTests\Test_PriorityDefinition.py">
       <SubType>Code</SubType>
@@ -77,6 +83,7 @@
   <ItemGroup>
     <Folder Include="Graph\" />
     <Folder Include="GeneticAlgorithm\" />
+    <Folder Include="TaskDuplication\" />
     <Folder Include="Processor\" />
     <Folder Include="UnitTests\" />
   </ItemGroup>

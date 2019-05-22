@@ -99,7 +99,9 @@ def mutateIndividual(population, individual):
 # Description: 
 #   Finds the matePool based on selectionNum with the help of the matingPool 
 #   function. Calculates the number of needed children and then fills the list
-#   of children by crossover with the individuals from the matingPool. 
+#   of children by crossover with the individuals from the matingPool. If 
+#   the matingPool only has 2 or less unique individuals returns an empty list
+#   because the population has converged 
 def mate(mP, population):
     matePool = matingPool(mP, population)
     #matePool = population.individualList
@@ -107,7 +109,8 @@ def mate(mP, population):
     numberOfChildren = 0
     childList = []
     while numberOfChildren != numberOfChildrenNeeded:
-        if mP.numberOfGenerations>2 and len(matePool) <= 2: #Desi se da budu 3 ista pa se zaglavi u petlji nisam sredio
+        fitnessValueList = list(set([x.fitness for x in matePool]))
+        if mP.numberOfGenerations>2 and len(fitnessValueList) <= 2:
             return childList       
         parentList = random.sample(matePool, 2)      
         randomNum = random.uniform(0,1)
@@ -140,7 +143,6 @@ def newGeneration(mP):
         population.individualList.extend(matingPoolList)
         population.individualList.extend(childrenList)
         if mP.numberOfGenerations > 2 and len(childrenList) == 0:
-            print("Selection Converged")
             population.individualList = []
 
         for individual in population.individualList:
@@ -166,3 +168,5 @@ def newGeneration(mP):
     print("Fittest Individual Cost: " + str(fittestIndividual.cost))
     print("Fittest Individual Time: " + str(fittestIndividual.totalTime))
     print("\n")
+
+    return fittestIndividual

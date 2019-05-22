@@ -7,8 +7,16 @@ from GeneticAlgorithm.GeneticOperations import *
 
 if __name__ == "__main__":
 #   drawAllGraphs(9)
-
-    mP = initialMultiPopulation(mPN, NIND, makeGraph7)
+#    G = makeGraphGATheirs()
+#    totalTime(G)
+#    G.cost = totalCost(G.P)
+#    print(G.totalTime)
+#    print(G.cost)
+#    drawGraph(G, "theirGraph/graph")
+#    print([x.val for x in G.V])
+#    print(calculateRealETC(G.V[5], G.P.processorList[2]))
+#    exit(0)
+    mP = initialMultiPopulation(mPN, NIND, makeGraphGA)
 
     updateFitness(mP)
     updateSelectionNumber(mP)
@@ -21,8 +29,19 @@ if __name__ == "__main__":
     #    j = j + 1
     #    print(population.minCost, population.minTime)
 
+    noChange = 0
     for i in range(0, 100):
-        newGeneration(mP)
+        lastCost = copy.deepcopy(mP.fittestIndividual.cost)
+        fittestGraph = newGeneration(mP)
+        if fittestGraph.cost == lastCost:
+            noChange = noChange + 1
+        else:
+            noChange = 0
+        if noChange >= 10:
+            print("No change for 10 generations")
+            break
+
+
 
     drawGraph(mP.fittestIndividual, "multiPopulationFittest/lastGeneration")
 

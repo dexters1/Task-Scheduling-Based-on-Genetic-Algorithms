@@ -126,6 +126,6 @@ def matingPool(mP, population):
     selectionNum = numberOfSelectionIndividualsForPopulation(population)
     for i in range(0,selectionNum):
         L.append(population.individualList[i])
-    if not(mP.numberOfGenerations % 5):
+    if not(mP.numberOfGenerations % 7):
         L.append(copy.deepcopy(mP.fittestIndividual))
     return L

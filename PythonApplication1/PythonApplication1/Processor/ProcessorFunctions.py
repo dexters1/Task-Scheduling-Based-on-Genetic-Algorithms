@@ -9,7 +9,6 @@ from Graph.MakeGraphVariations import *
 # - Sredi unit testing za ProcessorFunctions
 
 vmBasePrice = 0.1 
-#0.0475
 vmBaseSpeed = 1.0
 
 # Input args:
@@ -53,7 +52,7 @@ def predecessorTime(G, vertex):
 # Issues:
 #   - No error handling if input isn't correct
 def finishTime(G, vertex):
-    return startTime(G, vertex) + calculateETC(vertex.weight, vertex.processor)
+    return startTime(G, vertex) + calculateRealETC(vertex, vertex.processor)
 
 # Input args:
 #   Int, Int
@@ -65,6 +64,9 @@ def finishTime(G, vertex):
 #   - Treba videti da li treba broj zaokruziti navise sa ceil-om
 def calculateETC(time, processor):
     return time/processor.capacity 
+
+def calculateRealETC(vertex, processor):
+    return(ETC[((round(float(vertex.val[1::])-1))*3 + round(float(processor.val[1::]))-1)])
 
 # Input args:
 #   Graph, Vertex, Vertex
@@ -128,8 +130,14 @@ def updateFinishTime(G):
 #   No output args
 # Description: 
 #   Calculates the cost of the virtual machine per unit of time
-def vmCost(processor):
-    return vmBasePrice*exp(processor.capacity/vmBaseSpeed)
+def vmCost(vertex, processor):
+    #return vmBasePrice*exp(processor.capacity/vmBaseSpeed)
+    return vmBasePrice*exp(processor.capacity)  #Sad imam problem sa definisanjem cene
+    #return vmBasePrice*exp(capacity(vertex,processor))
+
+def capacity(vertex, processor):
+
+    return (vertex.weight/calculateRealETC(vertex,processor))
 
 # Input args:
 #   Processor
@@ -171,10 +179,10 @@ def addNoCostSlot(processor):
 #   time it just multiplies the price per unit of time with the idle time
 def cost(processor, vertex):
     if not isinstance(vertex,Slot):
-        return vmCost(processor)*ceil(calculateETC(vertex.weight, processor))
+        return vmCost(vertex, processor)*ceil(calculateRealETC(vertex, processor))
     if vertex.noCost == True:
         return 0
-    return vmCost(processor)*ceil((vertex.finishTime - vertex.startTime))
+    return vmCost(vertex, processor)*ceil((vertex.finishTime - vertex.startTime))
 
 # Input args:
 #   ProcessorList
