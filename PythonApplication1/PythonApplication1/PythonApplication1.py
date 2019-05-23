@@ -7,14 +7,12 @@ from GeneticAlgorithm.GeneticOperations import *
 
 if __name__ == "__main__":
 #   drawAllGraphs(9)
-#    G = makeGraphGATheirs()
-#    totalTime(G)
-#    G.cost = totalCost(G.P)
-#    print(G.totalTime)
-#    print(G.cost)
-#    drawGraph(G, "theirGraph/graph")
-#    print([x.val for x in G.V])
-#    print(calculateRealETC(G.V[5], G.P.processorList[2]))
+    G = makeGraphGATheirs()
+    totalTime(G)
+    G.cost = totalCost(G.P)
+    print(G.totalTime)
+    print(G.cost)
+    drawGraph(G, "theirGraph/graph")
 #    exit(0)
     mP = initialMultiPopulation(mPN, NIND, makeGraphGA)
 

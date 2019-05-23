@@ -480,9 +480,9 @@ def makeGraphTest77():
 
 def makeGraphGA():
 
-    p1 = Processor(capacity=0.3, val="p1")
-    p2 = Processor(capacity=0.6, val="p2")
-    p3 = Processor(capacity=1, val="p3")
+    p1 = Processor(capacity=0.9, val="p1") #1/3 # 2*(1/3) # 4*(1/3)
+    p2 = Processor(capacity=0.9, val="p2")
+    p3 = Processor(capacity=0.9, val="p3")
     P = ProcessorList([p1,p2,p3])
 
     v1 = Vertex("v1", 13, p2)
@@ -524,9 +524,9 @@ def makeGraphGA():
 
 def makeGraphGATheirs():
 
-    p1 = Processor(capacity=0.3, val="p1")
-    p2 = Processor(capacity=0.6, val="p2")
-    p3 = Processor(capacity=1, val="p3")
+    p1 = Processor(capacity=0.9, val="p1")
+    p2 = Processor(capacity=0.9, val="p2")
+    p3 = Processor(capacity=0.9, val="p3")
     P = ProcessorList([p1,p2,p3])
 
     v11 = Vertex("v1.1", 13, p1)

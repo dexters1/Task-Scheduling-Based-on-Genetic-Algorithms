@@ -130,5 +130,6 @@ def graphDepthHelperFunction(n, vertex, G):
 def sortGraphByPriority(G):
     defineGraphDepth(G)
     G.V.sort(key=lambda x: x.priority, reverse=True)
+    #G.V.sort(key=lambda x: x.priority, reverse=False) #debug novo
     G.V.sort(key=lambda x: x.depth, reverse=False)
     

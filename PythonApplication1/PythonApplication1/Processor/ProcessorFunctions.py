@@ -9,7 +9,7 @@ from Graph.MakeGraphVariations import *
 # - Sredi unit testing za ProcessorFunctions
 
 vmBasePrice = 0.1 
-vmBaseSpeed = 1.0
+vmBaseSpeed = 1/3
 
 # Input args:
 #   Graph, Vertex
@@ -179,10 +179,10 @@ def addNoCostSlot(processor):
 #   time it just multiplies the price per unit of time with the idle time
 def cost(processor, vertex):
     if not isinstance(vertex,Slot):
-        return vmCost(vertex, processor)*ceil(calculateRealETC(vertex, processor))
+        return vmCost(vertex, processor)*calculateRealETC(vertex, processor)
     if vertex.noCost == True:
         return 0
-    return vmCost(vertex, processor)*ceil((vertex.finishTime - vertex.startTime))
+    return vmCost(vertex, processor)*(vertex.finishTime - vertex.startTime)
 
 # Input args:
 #   ProcessorList

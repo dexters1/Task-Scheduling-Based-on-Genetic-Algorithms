@@ -11,6 +11,7 @@ class Vertex:
         self.startTime = None
         self.finishTime = None
         self.priority = None
+        self.cost = None#novo debug
         self.successors = []
         self.predecessors = []
         self.depth = None

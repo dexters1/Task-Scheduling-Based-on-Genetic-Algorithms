@@ -135,9 +135,18 @@ def updateGraph(G):
     updatePredecessors(G)
     Graph.PriorityDefinition.priorityDefinition(G)
     Processor.ProcessorFunctions.updateProcessorTaskList(G)
+
+    #test
+   # copyG = G.P.processorList[1].taskList[2]
+   # G.P.processorList[1].taskList[2] = G.P.processorList[1].taskList[3]
+   # G.P.processorList[1].taskList[3] = copyG
+
     Processor.ProcessorFunctions.updateStartTime(G)
     Processor.ProcessorFunctions.updateFinishTime(G)
     Processor.ProcessorFunctions.addSlot(G)
+
+    for vertex in G.V: #novo debug
+        vertex.cost = Processor.ProcessorFunctions.cost(vertex.processor, vertex)
 
 
 def totalTime(G):
