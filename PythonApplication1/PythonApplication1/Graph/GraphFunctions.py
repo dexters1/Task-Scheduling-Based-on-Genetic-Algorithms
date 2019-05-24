@@ -147,6 +147,8 @@ def updateGraph(G):
 
     for vertex in G.V: #novo debug
         vertex.cost = Processor.ProcessorFunctions.cost(vertex.processor, vertex)
+    totalTime(G)
+    G.cost = Processor.ProcessorFunctions.totalCost(G.P)
 
 
 def totalTime(G):
@@ -159,3 +161,8 @@ def totalTime(G):
         i = i - 1
     G.totalTime = totalTime
     return totalTime
+
+def removeEdge(G, vertex1, vertex2):
+    for edge in G.E:
+        if edge.first == vertex1 and edge.second == vertex2:
+            G.E.remove(edge)

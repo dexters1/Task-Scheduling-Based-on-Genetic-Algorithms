@@ -4,6 +4,7 @@ from Graph.DrawGraph import *
 from Processor.ProcessorFunctions import*
 from GeneticAlgorithm.PopulationInitialization import *
 from GeneticAlgorithm.GeneticOperations import *
+from TaskDuplication.TaskDuplicationFunctions import *
 
 if __name__ == "__main__":
 #   drawAllGraphs(9)
@@ -13,6 +14,15 @@ if __name__ == "__main__":
     print(G.totalTime)
     print(G.cost)
     drawGraph(G, "theirGraph/graph")
+    G = makeGraph7()
+    for processor in G.P.processorList:
+        print([x.val for x in processor.taskList])
+        print([x.finishTime for x in processor.taskList])
+    taskDuplication(G)
+
+    drawGraph(G, "taskDuplicationTest/Graf7")
+
+
 #    exit(0)
     mP = initialMultiPopulation(mPN, NIND, makeGraphGA)
 
@@ -39,8 +49,9 @@ if __name__ == "__main__":
             print("No change for 10 generations")
             break
 
-
-
+    taskDuplication(mP.fittestIndividual)
+    print(mP.fittestIndividual.totalTime)
+    print(mP.fittestIndividual.cost)
     drawGraph(mP.fittestIndividual, "multiPopulationFittest/lastGeneration")
 
     #print( [x.selectionNumber for x in matingPool(mP[0])])
