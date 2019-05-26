@@ -55,8 +55,15 @@ def duplicateTask(G, predecessor, vertex):
     
 
     duplicateEdges(G, predecessor, vertex, duplicatedTask)
-    removeEdge(G, predecessor, vertex)
+    for successor in predecessor.successors:
+        if successor.processor == vertex.processor:
+            removeEdge(G, predecessor, successor)
+
     G.V.append(duplicatedTask)
+    updatePredecessors(G)
+    updateSuccessors(G)
+
+    #Proveri kriterijum za cenu ako je zadovoljen samo zavrsi normalo, ako nije vrati stanje kao sto je bilo pre promena
 
     return duplicatedTask.startTime
 
@@ -65,7 +72,10 @@ def duplicateTask(G, predecessor, vertex):
 
 
 def duplicateEdges(G, predecessor, vertex, duplicatedTask):
-    G.E.append(Edge(duplicatedTask, vertex, getEdgeWeight(G,predecessor,vertex)))
+    for successor in predecessor.successors:#debug novo
+        if successor.processor == vertex.processor: #debug
+            #G.E.append(Edge(duplicatedTask, vertex, getEdgeWeight(G,predecessor,vertex)))
+            G.E.append(Edge(duplicatedTask, successor, getEdgeWeight(G,predecessor,successor)))
     for predecess in predecessor.predecessors:
         G.E.append(Edge(predecess, duplicatedTask, getEdgeWeight(G, predecess, predecessor)))
 
