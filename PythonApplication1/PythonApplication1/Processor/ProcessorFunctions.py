@@ -24,6 +24,7 @@ vmBaseSpeed = 1/3
 def startTime(G, vertex):
     return max(availableProcessorForTask(G, vertex),max(predecessorTime(G, vertex)))
 
+
 # Input args:
 #   Graph, Vertex
 # output args:

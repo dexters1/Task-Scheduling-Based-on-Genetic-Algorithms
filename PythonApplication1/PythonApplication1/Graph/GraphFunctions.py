@@ -38,6 +38,11 @@ def getEdgeWeight(G, first, second):
     for edge in G.E:
         if edge.first == first and edge.second == second:
             return edge.weight
+    for edge in G.E:
+        firstEdge = first.val.split('.')[0]
+        secondEdge = second.val.split('.')[0]
+        if firstEdge == edge.first.val and secondEdge == edge.second.val:
+            return edge.weight
     exit(1)
 
 

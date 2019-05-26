@@ -2,33 +2,36 @@ from GeneticAlgorithm.GeneticAlgorithmClasses import *
 from Processor.ProcessorFunctions import *
 from Graph.PriorityDefinition import getWeight
 import copy
+from math import pow
 
-#k = (Omega/(1 - Omega))^2
+k = pow((Omega/(1 - Omega)),2)
+maxPrice = 0
 
 def taskDuplication(G):
-    for processor in G.P.processorList:
-        taskIterator = -1
-        taskListCopy = processor.taskList[:]
-        for task in processor.taskList:
-            taskIterator = taskIterator + 1
-            if isinstance(task, Slot):
-                    vertex = taskListCopy[taskIterator+1] #pazi na ovo sranje
-                    vertexStartTime = vertex.startTime
-                    vertexPredecessors = sortPredecessorsByArrivalTime(G, vertex)
-                    for predecessor in vertexPredecessors:
-                        if predecessor.processor == vertex.processor:
-                            continue
-                        timeOnNewProcessor = calculateRealETC(predecessor,processor)
-                        finishTimeOnNewProcessor = startTimeOnNewProcessor(G, predecessor, processor) + timeOnNewProcessor #OVDE OBRATI PAZNJU DA MOZDA POCETNO VREME IZVRSAVANJA SE MENJA JER JE NA DRUGOM PROCESORU OD PRETHODNIKA
-                        #I dalje nije sredjeno btw
-                        if (task.finishTime - task.startTime) >= timeOnNewProcessor and finishTimeOnNewProcessor < vertexStartTime:
-                            print ("Ovde bi kopirao: " + predecessor.val + " kao predecessor na task: " + vertex.val)
-                            vertexStartTime = duplicateTask(G, predecessor, vertex) #valjda ce zalepiti samo vertexu vrednost nove adrese a ne menjati staru adresu na novu vrednost
-                            task.finishTime = vertexStartTime
+    for depth in range(0,G.V[-1].depth):
+        for processor in G.P.processorList:
+            taskIterator = -1
+            taskListCopy = processor.taskList[:]
+            for task in processor.taskList:
+                taskIterator = taskIterator + 1
+                if isinstance(task, Slot):
+                        vertex = taskListCopy[taskIterator+1] #pazi na ovo sranje
+                        vertexStartTime = vertex.startTime
+                        vertexPredecessors = sortPredecessorsByArrivalTime(G, vertex)
+                        for predecessor in vertexPredecessors:
+                            if predecessor.processor == vertex.processor:
+                                continue
+                            timeOnNewProcessor = calculateRealETC(predecessor,processor)
+                            finishTimeOnNewProcessor = startTimeOnNewProcessor(G, predecessor, processor) + timeOnNewProcessor #OVDE OBRATI PAZNJU DA MOZDA POCETNO VREME IZVRSAVANJA SE MENJA JER JE NA DRUGOM PROCESORU OD PRETHODNIKA
+                            #I dalje nije sredjeno btw
+                            if (task.finishTime - task.startTime) >= timeOnNewProcessor and finishTimeOnNewProcessor < vertexStartTime:
+                                print ("Ovde bi kopirao: " + predecessor.val + " kao predecessor na task: " + vertex.val)
+                                vertexStartTime = duplicateTask(G, predecessor, vertex) #valjda ce zalepiti samo vertexu vrednost nove adrese a ne menjati staru adresu na novu vrednost
+                                task.finishTime = vertexStartTime
                             
-                            #Kada dodam  nova kopiranja moram ih racunati zarad daljeg obzira i uvazavanja za dalje kopiranje
+                                #Kada dodam  nova kopiranja moram ih racunati zarad daljeg obzira i uvazavanja za dalje kopiranje
                             #znaci slot bi mi se smanjio u trajanju i vertex.startTime tj vertex treba da postane kopirani task
-    updateGraph(G)
+        updateGraph(G)
 
 def sortPredecessorsByArrivalTime(G, vertex):
     L = []
@@ -44,6 +47,7 @@ def duplicateTask(G, predecessor, vertex):
     duplicatedTask.val = predecessor.val + "." + vertex.processor.val[1::]
     duplicatedTask.weight = predecessor.weight
     duplicatedTask.processor = vertex.processor
+
     duplicatedTask.predecessors = predecessor.predecessors
     successorList = []
     successorList.append(vertex)
@@ -52,7 +56,18 @@ def duplicateTask(G, predecessor, vertex):
     duplicatedTask.finishTime = vertex.startTime
     duplicatedTask.startTime = duplicatedTask.finishTime - calculateRealETC(predecessor, duplicatedTask.processor)#za ovo nisam siguran msm da moram pogledati njegove predecessore za to
 
-    
+    vertexCopyOfGraph = G.V[:]
+    edgeCopyOfGraph = G.E[:]
+    oldCost = totalCost(G.P)#P ili P.processorList?
+    oldTime = totalTime(G)
+    print(oldCost)
+    print(oldTime)
+
+    global maxPrice
+    if maxPrice < oldCost:
+        maxPrice = oldCost
+
+    predecessorCheck(G, duplicatedTask)
 
     duplicateEdges(G, predecessor, vertex, duplicatedTask)
     for successor in predecessor.successors:
@@ -63,7 +78,31 @@ def duplicateTask(G, predecessor, vertex):
     updatePredecessors(G)
     updateSuccessors(G)
 
+    arrivalTimeList = sortPredecessorsByArrivalTime(G, duplicatedTask)
+    if len(arrivalTimeList) >= 1:
+        arrivalTime = arrivalTimeList[0].arrivalTime
+    else:
+        arrivalTime = 0
+
+    if arrivalTime > duplicatedTask.startTime:
+        print("Unhandled issue! Task can't be duplicated")
     #Proveri kriterijum za cenu ako je zadovoljen samo zavrsi normalo, ako nije vrati stanje kao sto je bilo pre promena
+    updateGraph(G)
+    newCost = totalCost(G.P)#P ili P.processorList?
+    newTime = totalTime(G)
+    print(newCost)
+    print(newTime)
+    if not(newTime == oldTime):
+        if not (-((newCost-oldCost)/(newTime - oldTime)) < k*maxPrice):
+            print("not worth it")
+            G.E = edgeCopyOfGraph
+            G.V = vertexCopyOfGraph
+            updateGraph(G)
+    else:
+        print("not worth it")
+        G.E = edgeCopyOfGraph
+        G.V = vertexCopyOfGraph
+        updateGraph(G)
 
     return duplicatedTask.startTime
 
@@ -91,3 +130,12 @@ def startTimeOnNewProcessor(G, vertex, processor): #Treba videti da li mozes sre
     if len(L) == 0:
         return 0
     return max(L)
+
+def predecessorCheck(G, duplicatedTask):
+    for i in range(0, len(duplicatedTask.predecessors)):
+        for vertex in G.V:
+            split = vertex.val.split('.')[0]
+            if duplicatedTask.predecessors[i].val == split:
+                if vertex.processor == duplicatedTask.processor: 
+                    duplicatedTask.predecessors[i] = vertex
+                    print( "predecessor Check: "+ vertex.val)

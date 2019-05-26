@@ -532,6 +532,7 @@ def makeGraphGATheirs():
     v11 = Vertex("v1.1", 13, p1)
     v12 = Vertex("v1.2", 13, p2)
     v13 = Vertex("v1.3", 13, p3)
+#    v11 = Vertex("v1", 13, p1)
 
     v2 = Vertex("v2", 17, p1)
     v3 = Vertex("v3", 14, p2)
@@ -544,12 +545,16 @@ def makeGraphGATheirs():
     v10 = Vertex("v10", 15, p2)
 
     vertex = [v11, v12, v13, v2, v3, v4, v5, v6, v7, v8, v9, v10]
+   # vertex = [v11, v2, v3, v4, v5, v6, v7, v8, v9, v10]
 
     edges = []
 
     edges.append(Edge(v11, v2, 18))
     edges.append(Edge(v12, v3, 12))
     edges.append(Edge(v13, v4, 9))
+    #edges.append(Edge(v11, v3, 12))#debug novo
+    #edges.append(Edge(v11, v4, 9))
+    #edges.append(Edge(v11, v5, 11))
     edges.append(Edge(v13, v5, 11))
     edges.append(Edge(v11, v6, 14))
     edges.append(Edge(v2, v8, 19))
@@ -589,28 +594,30 @@ def makeGraphDuplicateTest():
     P = ProcessorList([p1,p2,p3])
 
     v1 = Vertex("v1", 10, p1)
-    v2 = Vertex("v2", 15, p2)
-    v3 = Vertex("v3", 15, p2)
-    v4 = Vertex("v4", 15, p3)
-    v5 = Vertex("v5", 15, p2)
+    v2 = Vertex("v2", 15, p1)
+    v3 = Vertex("v3", 15, p1)
+    v4 = Vertex("v4", 15, p1)
+    v5 = Vertex("v5", 15, p1)
     v6 = Vertex("v6", 15, p1)
     v7 = Vertex("v7", 15, p1)
-    v8 = Vertex("v8", 15, p2)
-    v9 = Vertex("v9", 15, p3)
+    v8 = Vertex("v8", 15, p1)
+    v9 = Vertex("v9", 15, p1)
+    v10 = Vertex("v10", 15, p3)
 
-    vertex = [v1, v2, v3, v4, v5, v6, v7, v8, v9]
+    vertex = [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10]
 
     edges = []
 
-    edges.append(Edge(v1, v2))
+    edges.append(Edge(v1, v2, weight=5))
     edges.append(Edge(v1, v3))
     edges.append(Edge(v1, v4))
     edges.append(Edge(v1, v5))
-    edges.append(Edge(v1, v6))
+    edges.append(Edge(v1, v6, 3))
     edges.append(Edge(v6, v7))
     edges.append(Edge(v6, v9))
     edges.append(Edge(v3, v8))
-    edges.append(Edge(v2, v9))
+    edges.append(Edge(v2, v9, 3))
+    edges.append(Edge(v9, v10))
 
     G = Graph(vertex, edges, P)
 

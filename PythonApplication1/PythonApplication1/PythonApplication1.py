@@ -22,9 +22,15 @@ if __name__ == "__main__":
 
 #    drawGraph(G, "taskDuplicationTest/Graf7")
 
-    G = makeGraphDuplicateTest()
+#    G = makeGraphDuplicateTest()
+    G = makeGraphGATheirs()
+#    print([x.val for x in G.P.processorList[0].taskList])
+#    print([x.finishTime for x in G.P.processorList[0].taskList])
     taskDuplication(G)
+#    print([x.val for x in G.P.processorList[0].taskList])
+#    print([x.finishTime for x in G.P.processorList[0].taskList])
     drawGraph(G, "taskDuplicationTest/testGraf")
+#    print(G.cost)
 
 
     exit(0)
@@ -52,11 +58,16 @@ if __name__ == "__main__":
         if noChange >= 10:
             print("No change for 10 generations")
             break
-
+    
+    taskDuplication(mP.fittestIndividual)
     taskDuplication(mP.fittestIndividual)
     print(mP.fittestIndividual.totalTime)
     print(mP.fittestIndividual.cost)
     drawGraph(mP.fittestIndividual, "multiPopulationFittest/lastGeneration")
+    taskDuplication(mP.fittestIndividual)
+    print(mP.fittestIndividual.totalTime)
+    print(mP.fittestIndividual.cost)
+    drawGraph(mP.fittestIndividual, "taskDuplicationTest/lastGeneration")
 
     #print( [x.selectionNumber for x in matingPool(mP[0])])
 
