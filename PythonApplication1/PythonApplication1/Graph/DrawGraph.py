@@ -51,6 +51,16 @@ def drawAllGraphs(i):
            fileNameSimplified = "slika_" + str(iter) + "_Simplified.gv"	
            drawGraph(G,fileNameSimplified)
 
+# Input args:
+#   MultiPopulation
+# output args:
+#   No output args
+# Description: 
+#   Goes through all the different individuals in a MultiPopulation and
+#   calls the drawGraph fucntion for them.
+# Issues/Bugs:
+#   - No error handling if input argument i is larger than the number of Graphs
+#   in MakeGraphVariations
 def drawMpGraph(mP):
     i = -1
     j = -1

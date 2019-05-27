@@ -140,22 +140,22 @@ def updateGraph(G):
     updatePredecessors(G)
     Graph.PriorityDefinition.priorityDefinition(G)
     Processor.ProcessorFunctions.updateProcessorTaskList(G)
-
-    #test
-   # copyG = G.P.processorList[1].taskList[2]
-   # G.P.processorList[1].taskList[2] = G.P.processorList[1].taskList[3]
-   # G.P.processorList[1].taskList[3] = copyG
-
     Processor.ProcessorFunctions.updateStartTime(G)
     Processor.ProcessorFunctions.updateFinishTime(G)
     Processor.ProcessorFunctions.addSlot(G)
-
-    for vertex in G.V: #novo debug
+    for vertex in G.V:
         vertex.cost = Processor.ProcessorFunctions.cost(vertex.processor, vertex)
     totalTime(G)
     G.cost = Processor.ProcessorFunctions.totalCost(G.P)
 
-
+# Input args:
+#   Graph
+# output args:
+#   int
+# Description: 
+#   Returns the totalTime of a Graph
+# Issues/Bugs:
+#   - No error handling if Graph isn't correct
 def totalTime(G):
     depth = G.V[-1].depth
     totalTime = G.V[-1].finishTime
@@ -167,6 +167,12 @@ def totalTime(G):
     G.totalTime = totalTime
     return totalTime
 
+# Input args:
+#   Graph, Vertex, Vertex
+# output args:
+#   No output
+# Description: 
+#   Removes edge between vertex1 and vertex2 from edge list in Graph
 def removeEdge(G, vertex1, vertex2):
     for edge in G.E:
         if edge.first == vertex1 and edge.second == vertex2:

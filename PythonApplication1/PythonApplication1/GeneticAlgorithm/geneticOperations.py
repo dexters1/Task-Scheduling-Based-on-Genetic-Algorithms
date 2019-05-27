@@ -16,7 +16,7 @@ import copy
 def crossoverOperation(population, parent1, parent2):
     child = copy.deepcopy(parent1)
 
-    crossoverLenght = random.randint(0, len(child.V)/2)
+    crossoverLenght = random.randint(0, round(len(child.V)/2))
     crossoverPoint = random.randint(0, len(child.V)-crossoverLenght)
 
     vertexSortedByValChild = [x for x in child.V]

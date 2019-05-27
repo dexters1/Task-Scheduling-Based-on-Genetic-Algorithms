@@ -5,11 +5,8 @@ from Processor.ProcessorClass import *
 from Graph.GraphPreprocessing import *
 from Graph.MakeGraphVariations import *
 
-# ToDo:
-# - Sredi unit testing za ProcessorFunctions
-
 vmBasePrice = 0.1 
-vmBaseSpeed = 1/3
+vmBaseSpeed = 1.0
 
 # Input args:
 #   Graph, Vertex
@@ -58,14 +55,18 @@ def finishTime(G, vertex):
 # Input args:
 #   Int, Int
 # output args:
-#   int?
+#   double
 # Description: 
 #   Calculates the estimated time of completion for a task
-# Issues:
-#   - Treba videti da li treba broj zaokruziti navise sa ceil-om
 def calculateETC(time, processor):
     return time/processor.capacity 
 
+# Input args:
+#   Int, Int
+# output args:
+#   int
+# Description: 
+#   Calculates the estimated time of completion for a task using ETC table
 def calculateRealETC(vertex, processor):
     return(ETC[((round(float(vertex.val[1::])-1))*3 + round(float(processor.val[1::]))-1)])
 
@@ -131,14 +132,12 @@ def updateFinishTime(G):
 #   No output args
 # Description: 
 #   Calculates the cost of the virtual machine per unit of time
+# Issues:
+#   processor.capacity needs to be defined with VmBaseSpeed in mind
 def vmCost(vertex, processor):
-    #return vmBasePrice*exp(processor.capacity/vmBaseSpeed)
-    return vmBasePrice*exp(processor.capacity)  #Sad imam problem sa definisanjem cene
-    #return vmBasePrice*exp(capacity(vertex,processor))
+    return vmBasePrice*exp(processor.capacity)
 
-def capacity(vertex, processor):
 
-    return (vertex.weight/calculateRealETC(vertex,processor))
 
 # Input args:
 #   Processor
