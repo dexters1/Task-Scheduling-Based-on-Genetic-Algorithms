@@ -78,6 +78,9 @@
     <Compile Include="UnitTests\Test_ProcessorFunctions.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UnitTests\Test_TaskDuplication.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="UnitTests\__init__.py" />
   </ItemGroup>
   <ItemGroup>

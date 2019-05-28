@@ -517,7 +517,7 @@ def makeGraphGA():
     edges.append(Edge(v9, v10, 13))
 
     G = Graph(vertex, edges, P)
-    simplifyGraph(G)
+#    simplifyGraph(G)
 
     updateGraph(G)
 
@@ -533,7 +533,7 @@ def makeGraphGATheirs():
     v11 = Vertex("v1.1", 13, p1)
     v12 = Vertex("v1.2", 13, p2)
     v13 = Vertex("v1.3", 13, p3)
-#    v11 = Vertex("v1", 13, p1)
+    #v11 = Vertex("v1", 13, p1)
 
     v2 = Vertex("v2", 17, p1)
     v3 = Vertex("v3", 14, p2)
@@ -546,14 +546,14 @@ def makeGraphGATheirs():
     v10 = Vertex("v10", 15, p2)
 
     vertex = [v11, v12, v13, v2, v3, v4, v5, v6, v7, v8, v9, v10]
-   # vertex = [v11, v2, v3, v4, v5, v6, v7, v8, v9, v10]
+    #vertex = [v11, v2, v3, v4, v5, v6, v7, v8, v9, v10]
 
     edges = []
 
     edges.append(Edge(v11, v2, 18))
     edges.append(Edge(v12, v3, 12))
     edges.append(Edge(v13, v4, 9))
-    #edges.append(Edge(v11, v3, 12))#debug novo
+    #edges.append(Edge(v11, v3, 12))
     #edges.append(Edge(v11, v4, 9))
     #edges.append(Edge(v11, v5, 11))
     edges.append(Edge(v13, v5, 11))

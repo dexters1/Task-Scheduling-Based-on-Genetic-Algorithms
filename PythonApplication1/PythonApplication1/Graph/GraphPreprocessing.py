@@ -45,6 +45,10 @@ def combineVertex(vertex, outwardOfVertex, G):
         edge.weight = getEdgeWeight(G, iter, vertex)
         G.E.append(edge)
     outwardOfVertex.weight = outwardOfVertex.weight + vertex.weight
+    #novo debug begin
+    outwardOfVertex.preprocessed = True
+    outwardOfVertex.appendedVertexVal = vertex.val
+    #novo debug end
     G.V.remove(vertex)
     cG = G.E[:]
     for iter in cG:

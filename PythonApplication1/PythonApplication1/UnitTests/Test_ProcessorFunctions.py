@@ -28,11 +28,11 @@ class TestProcessorFunctions(unittest.TestCase):
         # sortiranjem pomocu prioriteta taskova u odnosu na dubinu.
         # Slika grafa 7 na kojim je vrsena analiza se nalazi u test-output
         # folderu pod imenom testGraphAfterProcessingFunctions7.gv.pdf
-        self.assertEqual(ceil(totalCost(G.P)), 179)
-        self.assertEqual([x.startTime for x in G.V], [0, 15.5, 6.5, 15, 17.5, 22, 42.5, 43.5, 45, 73])
-        self.assertEqual([x.finishTime for x in G.V],[6.5, 18.5, 15.0, 22.0, 29.5, 28.5, 51.0, 46.833333333333336, 56.0, 78.0])
+        self.assertEqual(ceil(totalCost(G.P)), 155)
+        self.assertEqual([x.startTime for x in G.V], [0, 6.5, 15.5, 17.5, 13.5, 22.0, 42.5, 43.5, 36.5, 64.5])
+        self.assertEqual([round(x.finishTime) for x in G.V],[6, 14, 18, 30, 22, 28, 51, 47, 48, 70])
         self.assertEqual([processor.val for processor in G.P.processorList[0].taskList], ["NoCostSlot", "v5", "Slot", "v7"])
-        self.assertEqual([processor.val for processor in G.P.processorList[1].taskList], ["v1", "v2", "v3", "v6", "Slot", "v9"])
+        self.assertEqual([processor.val for processor in G.P.processorList[1].taskList], ["v1", "v3",  "v2", "v6", "Slot", "v9"])
         self.assertEqual([processor.val for processor in G.P.processorList[2].taskList], ["NoCostSlot", "v4", "Slot", "v8", "Slot", "v10"])
 
 
@@ -45,9 +45,9 @@ class TestProcessorFunctions(unittest.TestCase):
         # sortiranjem pomocu prioriteta taskova u odnosu na dubinu.
         # Slika grafa 6 na kojim je vrsena analiza se nalazi u test-output
         # folderu pod imenom testGraphAfterProcessingFunctions6.gv.pdf
-        self.assertEqual(ceil(totalCost(G.P)), 300)
-        self.assertEqual([x.startTime for x in G.V], [0, 34, 24, 5, 87, 90.66666666666667, 57, 93, 98.66666666666667, 112.66666666666667, 126.66666666666667, 160.16666666666669])
-        self.assertEqual([x.finishTime for x in G.V],[5.0, 57.0, 29.0, 15.5, 90.66666666666667, 93, 60, 98.66666666666667, 102.66666666666667, 119.16666666666667, 134.16666666666669, 171.16666666666669])
+        self.assertEqual(ceil(totalCost(G.P)), 295)
+        self.assertEqual([round(x.startTime) for x in G.V], [0, 34, 5, 24, 87, 57, 91, 93, 99, 113, 127, 160])
+        self.assertEqual([round(x.finishTime) for x in G.V],[5, 57, 16, 29, 91, 60, 93, 99, 103, 119, 134, 171])
         self.assertEqual([processor.val for processor in G.P.processorList[0].taskList], ["NoCostSlot", "v3", "v6", "Slot", "v12"])
         self.assertEqual([processor.val for processor in G.P.processorList[1].taskList], ["v1", "v5", "Slot", "v9", "Slot", "v11"])
         self.assertEqual([processor.val for processor in G.P.processorList[2].taskList], ["NoCostSlot", "v2", "Slot", "v4", "v8", "v7", "v10"])

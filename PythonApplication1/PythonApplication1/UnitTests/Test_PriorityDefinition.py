@@ -14,7 +14,7 @@ class TestPriorityDefinition(unittest.TestCase):
         # pod nazivom slike testPriorityDefinition.gv.pdf. Takodje testirano i
         # odredjivanje dubine vertexa grafa
         drawGraph(G, "testPriorityDefinition.gv")
-        self.assertEqual([vertex.priority for vertex in G.V], [114, 126, 115, 114, 102, 94, 171, 105, 57, 36])
+        self.assertEqual([vertex.priority for vertex in G.V], [39, 114, 104, 102, 94, 82, 171, 57, 57, 36])
         self.assertEqual([vertex.depth for vertex in G.V], [0, 1, 1, 1, 1, 1, 2, 2, 2, 3])
 
 

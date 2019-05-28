@@ -7,7 +7,7 @@ from GeneticAlgorithm.GeneticOperations import *
 from TaskDuplication.TaskDuplicationFunctions import *
 
 if __name__ == "__main__":
-#   drawAllGraphs(9)
+#   drawAllGraphs(9);
     mP = initialMultiPopulation(mPN, NIND, makeGraphGA)
 
     updateFitness(mP)

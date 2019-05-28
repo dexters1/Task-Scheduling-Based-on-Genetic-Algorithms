@@ -157,13 +157,10 @@ def updateGraph(G):
 # Issues/Bugs:
 #   - No error handling if Graph isn't correct
 def totalTime(G):
-    depth = G.V[-1].depth
     totalTime = G.V[-1].finishTime
-    i = -1
-    while G.V[i].depth == depth:
-        if totalTime < G.V[i].finishTime:
-            totalTime = G.V[i].finishTime
-        i = i - 1
+    for vertex in G.V:
+        if totalTime < vertex.finishTime:
+            totalTime = vertex.finishTime
     G.totalTime = totalTime
     return totalTime
 

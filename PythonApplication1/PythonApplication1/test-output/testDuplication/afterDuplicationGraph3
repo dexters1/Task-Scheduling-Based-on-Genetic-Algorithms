@@ -1,0 +1,43 @@
+digraph {
+	v3 [label="v3
+w:23|pri:44|st:0|ft:13|p2|9.61" fontsize=8.0]
+	v1 [label="v1
+w:10|pri:36|st:0|ft:14|p1|3.81" fontsize=8.0]
+	"v2.1" [label="v2.1
+w:15|pri:22|st:14|ft:27|p1|3.53" fontsize=8.0]
+	v2 [label="v2
+w:15|pri:0|st:13|ft:32|p2|14.04" fontsize=8.0]
+	"v4.2" [label="v4.2
+w:11|pri:147|st:38|ft:46|p2|5.91" fontsize=8.0]
+	"v4.3" [label="v4.3
+w:11|pri:117|st:38|ft:45|p3|14.06" fontsize=8.0]
+	v4 [label="v4
+w:11|pri:105|st:35|ft:48|p1|3.53" fontsize=8.0]
+	"v5.2" [label="v5.2
+w:21|pri:38|st:46|ft:59|p2|9.61" fontsize=8.0]
+	v5 [label="v5
+w:21|pri:28|st:45|ft:55|p3|20.09" fontsize=8.0]
+	"v5.1" [label="v5.1
+w:21|pri:24|st:48|ft:60|p1|3.26" fontsize=8.0]
+	v7 [label="v7
+w:17|pri:17|st:59|ft:74|p2|11.08" fontsize=8.0]
+	v8 [label="v8
+w:7|pri:7|st:55|ft:69|p3|28.12" fontsize=8.0]
+	v6 [label="v6
+w:3|pri:3|st:60|ft:73|p1|3.53" fontsize=8.0]
+	v1 -> v4 [label=18 constraint=true fontsize=6.0]
+	v3 -> v4 [label=22 constraint=true fontsize=6.0]
+	v5 -> v8 [label=12 constraint=true fontsize=6.0]
+	"v2.1" -> v4 [label=11 constraint=true fontsize=6.0]
+	"v5.1" -> v6 [label=30 constraint=true fontsize=6.0]
+	v4 -> "v5.1" [label=22 constraint=true fontsize=6.0]
+	"v5.2" -> v7 [label=14 constraint=true fontsize=6.0]
+	"v4.2" -> "v5.2" [label=22 constraint=true fontsize=6.0]
+	v1 -> "v4.2" [label=18 constraint=true fontsize=6.0]
+	v3 -> "v4.2" [label=22 constraint=true fontsize=6.0]
+	"v2.1" -> "v4.2" [label=11 constraint=true fontsize=6.0]
+	"v4.3" -> v5 [label=22 constraint=true fontsize=6.0]
+	v1 -> "v4.3" [label=18 constraint=true fontsize=6.0]
+	v3 -> "v4.3" [label=22 constraint=true fontsize=6.0]
+	"v2.1" -> "v4.3" [label=11 constraint=true fontsize=6.0]
+}

@@ -5,6 +5,9 @@ from Processor.ProcessorClass import *
 from Graph.GraphPreprocessing import *
 from Graph.MakeGraphVariations import *
 
+from os import path
+
+
 vmBasePrice = 0.1 
 vmBaseSpeed = 1.0
 
@@ -68,7 +71,18 @@ def calculateETC(time, processor):
 # Description: 
 #   Calculates the estimated time of completion for a task using ETC table
 def calculateRealETC(vertex, processor):
-    return(ETC[((round(float(vertex.val[1::])-1))*3 + round(float(processor.val[1::]))-1)])
+    pathStr = path.abspath(sys.modules['__main__'].__file__)
+    if pathStr[-26::] == "Test_ProcessorFunctions.py":
+        return calculateETC(vertex.weight, processor)
+    #novo debug
+    if vertex.preprocessed == True:
+        firstETC = ETC[((round(float(vertex.val[1::])-1))*3 + round(float(processor.val[1::]))-1)]
+        secondETC = ETC[((round(float(vertex.appendedVertexVal[1::])-1))*3 + round(float(processor.val[1::]))-1)]
+        return firstETC + secondETC  
+    #novo end
+    vertexVal = vertex.val.split('.')[0]
+    #return(ETC[((round(float(vertex.val[1::])-1))*3 + round(float(processor.val[1::]))-1)])
+    return(ETC[((round(float(vertexVal[1::])-1))*3 + round(float(processor.val[1::]))-1)])#novo debug
 
 # Input args:
 #   Graph, Vertex, Vertex

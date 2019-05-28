@@ -38,7 +38,7 @@ def taskDuplication(G):
                             timeOnNewProcessor = calculateRealETC(predecessor,processor)
                             finishTimeOnNewProcessor = startTimeOnNewProcessor(G, predecessor, processor) + timeOnNewProcessor
                             if (task.finishTime - task.startTime) >= timeOnNewProcessor and finishTimeOnNewProcessor < vertexStartTime:
-                                print ("Ovde bi kopirao: " + predecessor.val + " kao predecessor na task: " + vertex.val)
+                                print("duplication of: " + str(predecessor.val) + " on: " + str(vertex.val))
                                 vertexStartTime = duplicateTask(G, predecessor, vertex)
                                 task.finishTime = vertexStartTime
         updateGraph(G)
@@ -189,14 +189,20 @@ def checkIfAllCriteriaIsSatisfied(G, duplicatedTask, edgeCopyOfGraph, vertexCopy
     #check for improvement in Time
     if not(newTime == oldTime):
         #costCriteria
-        if not (-((newCost-oldCost)/(newTime - oldTime)) < k*maxPrice):
+        if not (-((newCost-oldCost)/(newTime - oldTime)) < k*maxPrice): #izgleda da nisam dobro razumeo formulu
             print("not worth it")
             G.E = edgeCopyOfGraph
             G.V = vertexCopyOfGraph
             updateGraph(G)
             return False
+        if newCost > oldCost and newTime > oldTime:
+            print("not worth it at all")
+            G.E = edgeCopyOfGraph
+            G.V = vertexCopyOfGraph
+            updateGraph(G)
+            return False
     else:
-        print("not worth it")
+        print("Same time")
         G.E = edgeCopyOfGraph
         G.V = vertexCopyOfGraph
         updateGraph(G)

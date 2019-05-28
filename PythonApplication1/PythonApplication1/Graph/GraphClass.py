@@ -11,10 +11,11 @@ class Vertex:
         self.startTime = None
         self.finishTime = None
         self.priority = None
-        self.cost = None#novo debug
+        self.cost = None
         self.successors = []
         self.predecessors = []
         self.depth = None
+        self.preprocessed = False
 
 class Edge:
     def __init__(self, u, v, weight=None):

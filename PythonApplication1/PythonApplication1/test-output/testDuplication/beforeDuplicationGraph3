@@ -1,0 +1,25 @@
+digraph {
+	v3 [label="v3
+w:23|pri:22|st:0|ft:13|p2|9.61" fontsize=8.0]
+	v2 [label="v2
+w:15|pri:11|st:13|ft:32|p2|14.04" fontsize=8.0]
+	v1 [label="v1
+w:10|pri:0|st:0|ft:14|p1|3.81" fontsize=8.0]
+	v4 [label="v4
+w:11|pri:283|st:43|ft:56|p1|3.53" fontsize=8.0]
+	v5 [label="v5
+w:21|pri:98|st:78|ft:88|p3|20.09" fontsize=8.0]
+	v7 [label="v7
+w:17|pri:17|st:102|ft:117|p2|11.08" fontsize=8.0]
+	v8 [label="v8
+w:7|pri:7|st:88|ft:102|p3|28.12" fontsize=8.0]
+	v6 [label="v6
+w:3|pri:3|st:118|ft:131|p1|3.53" fontsize=8.0]
+	v1 -> v4 [label=18 constraint=true fontsize=6.0]
+	v2 -> v4 [label=11 constraint=true fontsize=6.0]
+	v3 -> v4 [label=22 constraint=true fontsize=6.0]
+	v4 -> v5 [label=22 constraint=true fontsize=6.0]
+	v5 -> v6 [label=30 constraint=true fontsize=6.0]
+	v5 -> v7 [label=14 constraint=true fontsize=6.0]
+	v5 -> v8 [label=12 constraint=true fontsize=6.0]
+}

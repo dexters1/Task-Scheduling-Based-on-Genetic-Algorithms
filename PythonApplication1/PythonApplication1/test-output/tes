@@ -1,32 +1,28 @@
 digraph {
 	v1 [label="v1
-w:13|pri:20|st:0|ft:6.5|p2|4.802886464304923" fontsize=8.0]
-	v3 [label="v3
-w:14|pri:103|st:6.5|ft:13.5|p2|5.172339269251456" fontsize=8.0]
+w:13|pri:32|st:0|ft:16|p2|3.93536497785112" fontsize=8.0]
 	v4 [label="v4
-w:9|pri:100|st:15.5|ft:18.5|p3|6.0256610769563" fontsize=8.0]
+w:9|pri:100|st:25|ft:32|p3|1.721722177809865" fontsize=8.0]
 	v5 [label="v5
-w:12|pri:83|st:17.5|ft:29.5|p1|3.2619381941508543" fontsize=8.0]
+w:12|pri:83|st:27|ft:39|p1|2.95152373338834" fontsize=8.0]
 	v2 [label="v2
-w:17|pri:81|st:13.5|ft:22.0|p2|6.280697684091053" fontsize=8.0]
-	v6 [label="v6
-w:13|pri:68|st:22.0|ft:28.5|p2|4.802886464304923" fontsize=8.0]
-	v9 [label="v9
-w:17|pri:148|st:42.5|ft:51.0|p2|6.280697684091053" fontsize=8.0]
-	v8 [label="v8
-w:10|pri:75|st:43.5|ft:46.83|p3|6.69517897439589" fontsize=8.0]
+w:17|pri:81|st:16|ft:35|p2|4.6732459111982045" fontsize=8.0]
 	v7 [label="v7
-w:11|pri:60|st:36.5|ft:47.5|p1|2.99011001130495" fontsize=8.0]
+w:25|pri:74|st:39|ft:46|p1|1.721722177809865" fontsize=8.0]
+	v6 [label="v6
+w:13|pri:68|st:35|ft:51|p2|3.93536497785112" fontsize=8.0]
+	v9 [label="v9
+w:17|pri:148|st:55|ft:67|p2|2.95152373338834" fontsize=8.0]
+	v8 [label="v8
+w:10|pri:75|st:66|ft:80|p3|3.44344435561973" fontsize=8.0]
 	v10 [label="v10
-w:15|pri:45|st:64.5|ft:69.5|p3|10.042768461593834" fontsize=8.0]
+w:15|pri:45|st:80|ft:96|p3|3.93536497785112" fontsize=8.0]
 	v1 -> v2 [label=18 constraint=true fontsize=6.0]
-	v1 -> v3 [label=12 constraint=true fontsize=6.0]
 	v1 -> v4 [label=9 constraint=true fontsize=6.0]
 	v1 -> v5 [label=11 constraint=true fontsize=6.0]
 	v1 -> v6 [label=14 constraint=true fontsize=6.0]
 	v2 -> v8 [label=19 constraint=true fontsize=6.0]
 	v2 -> v9 [label=16 constraint=true fontsize=6.0]
-	v3 -> v7 [label=23 constraint=true fontsize=6.0]
 	v4 -> v8 [label=27 constraint=true fontsize=6.0]
 	v4 -> v9 [label=23 constraint=true fontsize=6.0]
 	v5 -> v9 [label=13 constraint=true fontsize=6.0]
@@ -34,4 +30,5 @@ w:15|pri:45|st:64.5|ft:69.5|p3|10.042768461593834" fontsize=8.0]
 	v7 -> v10 [label=17 constraint=true fontsize=6.0]
 	v8 -> v10 [label=11 constraint=true fontsize=6.0]
 	v9 -> v10 [label=13 constraint=true fontsize=6.0]
+	v1 -> v7 [label=12 constraint=true fontsize=6.0]
 }

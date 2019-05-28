@@ -1,0 +1,47 @@
+digraph {
+	v3 [label="v3
+w:23|pri:58|st:0|ft:13|p2|9.61" fontsize=8.0]
+	"v2.1" [label="v2.1
+w:15|pri:38|st:0|ft:13|p1|3.53" fontsize=8.0]
+	v1 [label="v1
+w:10|pri:0|st:13|ft:27|p1|3.81" fontsize=8.0]
+	v2 [label="v2
+w:15|pri:0|st:13|ft:32|p2|14.04" fontsize=8.0]
+	"v1.3" [label="v1.3
+w:10|pri:0|st:0|ft:9|p3|18.08" fontsize=8.0]
+	"v1.2" [label="v1.2
+w:10|pri:0|st:32|ft:48|p2|11.82" fontsize=8.0]
+	"v4.2" [label="v4.2
+w:11|pri:147|st:48|ft:56|p2|5.91" fontsize=8.0]
+	"v4.3" [label="v4.3
+w:11|pri:145|st:42|ft:49|p3|14.06" fontsize=8.0]
+	v4 [label="v4
+w:11|pri:33|st:42|ft:55|p1|3.53" fontsize=8.0]
+	"v5.2" [label="v5.2
+w:21|pri:38|st:56|ft:69|p2|9.61" fontsize=8.0]
+	v5 [label="v5
+w:21|pri:28|st:49|ft:59|p3|20.09" fontsize=8.0]
+	"v5.1" [label="v5.1
+w:21|pri:24|st:59|ft:71|p1|3.26" fontsize=8.0]
+	v7 [label="v7
+w:17|pri:17|st:69|ft:84|p2|11.08" fontsize=8.0]
+	v8 [label="v8
+w:7|pri:7|st:59|ft:73|p3|28.12" fontsize=8.0]
+	v6 [label="v6
+w:3|pri:3|st:71|ft:84|p1|3.53" fontsize=8.0]
+	v1 -> v4 [label=27 constraint=true fontsize=6.0]
+	v3 -> v4 [label=29 constraint=true fontsize=6.0]
+	v5 -> v8 [label=16 constraint=true fontsize=6.0]
+	"v2.1" -> v4 [label=19 constraint=true fontsize=6.0]
+	"v5.2" -> v7 [label=30 constraint=true fontsize=6.0]
+	"v4.3" -> v5 [label=10 constraint=true fontsize=6.0]
+	v3 -> "v4.3" [label=29 constraint=true fontsize=6.0]
+	"v2.1" -> "v4.3" [label=19 constraint=true fontsize=6.0]
+	"v5.1" -> v6 [label=29 constraint=true fontsize=6.0]
+	"v4.3" -> "v5.1" [label=10 constraint=true fontsize=6.0]
+	"v4.2" -> "v5.2" [label=10 constraint=true fontsize=6.0]
+	v3 -> "v4.2" [label=29 constraint=true fontsize=6.0]
+	"v2.1" -> "v4.2" [label=19 constraint=true fontsize=6.0]
+	"v1.3" -> "v4.3" [label=27 constraint=true fontsize=6.0]
+	"v1.2" -> "v4.2" [label=27 constraint=true fontsize=6.0]
+}
