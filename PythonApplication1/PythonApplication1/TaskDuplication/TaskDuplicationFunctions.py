@@ -22,6 +22,7 @@ maxPrice = 0
 #   There is a loop of range (0,maximumDepthOfGraph) for duplication in case duplicated tasks
 #   could also benefit from further duplication
 def taskDuplication(G):
+    maxPrice = G.cost
     for depth in range(0,G.V[-1].depth):
         for processor in G.P.processorList:
             taskIterator = -1
