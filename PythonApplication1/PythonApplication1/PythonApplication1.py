@@ -10,7 +10,7 @@ if __name__ == "__main__":
 #    drawAllGraphs(9);
     #I dalje ne kapiram sta je edge weight i ko se njime bavi
     #jer je procesor i dalje slobodan za obradu taskova dok prenosi
-    #task na drugi procesor
+    #task na drugi procesor, da li onda stvarno treba i za kraj da uvazim taj edge kao slot?
     mP = initialMultiPopulation(mPN, NIND, makeGraphGA)
 
     updateFitness(mP)
