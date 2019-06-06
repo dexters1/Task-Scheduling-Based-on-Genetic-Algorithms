@@ -1,20 +1,20 @@
 digraph {
 	v2 [label="v2
-w:15|pri:30|st:0|ft:7.5|p2" fontsize=8.0]
-	v1 [label="v1
-w:10|pri:29|st:0|ft:10.0|p1" fontsize=8.0]
+w:15|pri:30|st:0|ft:19|p2|14.04" fontsize=8.0]
 	v3 [label="v3
-w:23|pri:16|st:7.5|ft:19.0|p2" fontsize=8.0]
+w:23|pri:16|st:19|ft:32|p2|9.61" fontsize=8.0]
+	v1 [label="v1
+w:10|pri:0|st:0|ft:14|p1|3.81" fontsize=8.0]
 	v4 [label="v4
-w:11|pri:285|st:37.5|ft:48.5|p1" fontsize=8.0]
+w:11|pri:285|st:49|ft:62|p1|3.53" fontsize=8.0]
 	v5 [label="v5
-w:21|pri:115|st:66.5|ft:73.5|p3" fontsize=8.0]
+w:21|pri:93|st:80|ft:90|p3|20.09" fontsize=8.0]
 	v7 [label="v7
-w:17|pri:17|st:95.5|ft:104.0|p2" fontsize=8.0]
+w:17|pri:17|st:112|ft:127|p2|11.08" fontsize=8.0]
 	v8 [label="v8
-w:7|pri:7|st:73.5|ft:75.83|p3" fontsize=8.0]
+w:7|pri:7|st:90|ft:104|p3|28.12" fontsize=8.0]
 	v6 [label="v6
-w:3|pri:3|st:84.5|ft:87.5|p1" fontsize=8.0]
+w:3|pri:3|st:101|ft:114|p1|3.53" fontsize=8.0]
 	v1 -> v4 [label=29 constraint=true fontsize=6.0]
 	v2 -> v4 [label=30 constraint=true fontsize=6.0]
 	v3 -> v4 [label=16 constraint=true fontsize=6.0]

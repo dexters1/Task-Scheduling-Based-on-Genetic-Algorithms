@@ -4,6 +4,7 @@ from math import ceil
 from Processor.ProcessorClass import *
 from Graph.GraphPreprocessing import *
 from Graph.MakeGraphVariations import *
+from Graph.PriorityDefinition import getWeight
 
 from os import path
 
@@ -236,3 +237,36 @@ def updateProcessorInfo(G):
     updateStartTime(G)
     updateFinishTime(G)
     addSlot(G)
+    #novo debug
+    addLastWeightCost(G)
+    #end debug
+
+def addLastWeightCost(G):
+    for processor in G.P.processorList:
+        if len(processor.taskList) > 0:
+            if not isinstance(processor.taskList[-1], Slot):        
+                finishTime = processor.taskList[-1].startTime + getHighestEdgeWeight(G, processor.taskList[-1])
+                if finishTime == processor.taskList[-1].startTime:
+                    continue
+                processor.taskList.append(Slot(processor.taskList[-1].startTime, finishTime))
+            else:
+                print("Before: ")
+                print(processor.taskList[-1].val)
+                del processor.taskList[-1]
+                if isinstance(processor.taskList[-1], Slot):
+                    exit(2) 
+                print("After: ")
+                print(processor.taskList[-1].val)
+                finishTime = processor.taskList[-1].startTime + getHighestEdgeWeight(G, processor.taskList[-1])
+                if finishTime == processor.taskList[-1].startTime:
+                    continue
+                processor.taskList.append(Slot(processor.taskList[-1].startTime, finishTime))
+
+def getHighestEdgeWeight(G, task):
+    highestWeight = 0
+    for edge in G.E:
+        if edge.first == task:
+            edgeWeight = getWeight(G, edge.first, edge.second)
+            if highestWeight < edgeWeight:
+                highestWeight = edgeWeight
+    return highestWeight

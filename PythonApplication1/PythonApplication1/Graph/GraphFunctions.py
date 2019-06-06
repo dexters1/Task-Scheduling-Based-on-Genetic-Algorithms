@@ -143,6 +143,9 @@ def updateGraph(G):
     Processor.ProcessorFunctions.updateStartTime(G)
     Processor.ProcessorFunctions.updateFinishTime(G)
     Processor.ProcessorFunctions.addSlot(G)
+    #novo debug
+    Processor.ProcessorFunctions.addLastWeightCost(G)
+    #novo end
     for vertex in G.V:
         vertex.cost = Processor.ProcessorFunctions.cost(vertex.processor, vertex)
     totalTime(G)

@@ -27,7 +27,7 @@ def taskDuplication(G):
         for processor in G.P.processorList:
             taskIterator = -1
             taskListCopy = processor.taskList[:]
-            for task in processor.taskList:
+            for task in processor.taskList[:-1]:
                 taskIterator = taskIterator + 1
                 if isinstance(task, Slot):
                         vertex = taskListCopy[taskIterator+1]

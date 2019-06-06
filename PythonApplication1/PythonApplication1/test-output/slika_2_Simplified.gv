@@ -1,12 +1,12 @@
 digraph {
 	v1 [label="v1
-w:10|pri:58|st:0|ft:3.33|p3" fontsize=8.0]
+w:10|pri:58|st:0|ft:9|p3|18.08" fontsize=8.0]
 	v2 [label="v2
-w:24|pri:24|st:22.33|ft:34.33|p2" fontsize=8.0]
+w:24|pri:24|st:28|ft:47|p2|14.04" fontsize=8.0]
 	v3 [label="v3
-w:23|pri:23|st:34.33|ft:45.83|p2" fontsize=8.0]
+w:23|pri:23|st:47|ft:60|p2|9.61" fontsize=8.0]
 	v4 [label="v4
-w:11|pri:11|st:13.33|ft:24.33|p1" fontsize=8.0]
+w:11|pri:11|st:19|ft:32|p1|3.53" fontsize=8.0]
 	v1 -> v2 [label=19 constraint=true fontsize=6.0]
 	v1 -> v3 [label=29 constraint=true fontsize=6.0]
 	v1 -> v4 [label=10 constraint=true fontsize=6.0]

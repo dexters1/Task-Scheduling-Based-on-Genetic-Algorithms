@@ -1,7 +1,7 @@
 digraph {
 	v1 [label="v1
-w:10|pri:27|st:0|ft:10.0|p1" fontsize=8.0]
+w:10|pri:27|st:0|ft:14|p1|3.81" fontsize=8.0]
 	v2 [label="v2
-w:15|pri:15|st:37.0|ft:44.5|p2" fontsize=8.0]
+w:15|pri:15|st:41|ft:60|p2|14.04" fontsize=8.0]
 	v1 -> v2 [label=27 constraint=true fontsize=6.0]
 }
