@@ -7,10 +7,9 @@ from GeneticAlgorithm.GeneticOperations import *
 from TaskDuplication.TaskDuplicationFunctions import *
 
 if __name__ == "__main__":
-#    drawAllGraphs(9);
-    #I dalje ne kapiram sta je edge weight i ko se njime bavi
-    #jer je procesor i dalje slobodan za obradu taskova dok prenosi
-    #task na drugi procesor, da li onda stvarno treba i za kraj da uvazim taj edge kao slot?
+    #Dodaj jos sliku raspodele po procesorima
+    #Iskomentarisi kompleksnije funkcije
+    #Sredi da ne bude rekurzivno
     mP = initialMultiPopulation(mPN, NIND, makeGraphGA)
 
     updateFitness(mP)
@@ -29,9 +28,11 @@ if __name__ == "__main__":
             print("No change for 10 generations")
             break
 
+    drawGraph(mP.fittestIndividual, "taskDuplicationTest/PreDuplicationLastGeneration")
     taskDuplication(mP.fittestIndividual)
     print(mP.fittestIndividual.totalTime)
     print(totalCost(mP.fittestIndividual.P))
     drawGraph(mP.fittestIndividual, "taskDuplicationTest/lastGeneration")
+
 
    
