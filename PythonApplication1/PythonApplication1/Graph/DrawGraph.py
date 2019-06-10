@@ -19,7 +19,7 @@ def drawGraph(G, fileName):
 
     dot = Digraph()
     for vertex in G.V:
-        nodeName = vertex.val + "\n" + "w:" + str(vertex.weight) + "|" + "pri:"+str(vertex.priority) + "|"+"st:"+str(round(vertex.startTime,2))+"|"+"ft:"+str(round(vertex.finishTime,2))+"|"+str(vertex.processor.val) +"|" + str(round(vertex.cost,2))
+        nodeName = vertex.val + "\n" #+ "w:" + str(vertex.weight) + "|" + "pri:"+str(vertex.priority) + "|"+"st:"+str(round(vertex.startTime,2))+"|"+"ft:"+str(round(vertex.finishTime,2))+"|"+str(vertex.processor.val) +"|" + str(round(vertex.cost,2))
         dot.node(vertex.val, nodeName, fontsize=str(8.0))
     for edge in G.E:
         dot.edge(edge.first.val, edge.second.val,label=str(edge.weight), fontsize=str(6.0),constraint='true')

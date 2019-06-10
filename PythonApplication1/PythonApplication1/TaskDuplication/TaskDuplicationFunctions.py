@@ -211,6 +211,12 @@ def checkIfAllCriteriaIsSatisfied(G, duplicatedTask, edgeCopyOfGraph, vertexCopy
 
     return True
 
+# Input:
+#   Graph, Vertex(duplicatedTasK), Vertex(vertex), Vertex(predecessor)
+# Output:
+#   No output
+# Description:
+#   Assings necessary information to duplicatedTask from predecessor and vertex
 def duplicatedTaskAssignment(G, duplicatedTask, vertex, predecessor):
     duplicatedTask.val = predecessor.val + "." + vertex.processor.val[1::]
     duplicatedTask.weight = predecessor.weight

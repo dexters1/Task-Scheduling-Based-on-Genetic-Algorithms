@@ -33,11 +33,16 @@ def simplifyGraph(G):
 #   first vertex processing time ( weight ) to the second vertex and delete the 
 #   first vertex and it's edges from the graph
 # Issues/Bugs:
+#   - Currently it only works if preprocessing merges 2 vertecies, in case
+#   of multiple mergers appendedVertexVal would need to be a list and more
+#   functions would need to be rewritten to iterate through appendedVertexVal
+#   instead of using the last vertex appended to appendedVertexVal!!!!!!
 #   - Not to be used outside the simplifyGraph() function, it's only made to 
 #   help with simplifying of Graphs. 
 #   - It assumes the first vertex has only one output and the second vertex
 #   only one input due to it being the prerequisite of being called inside 
 #   the simplifyGraph() function
+
 def combineVertex(vertex, outwardOfVertex, G): 
     inwardOfVertex = getInDegrees(G, vertex)
     for iter in inwardOfVertex:
@@ -45,10 +50,10 @@ def combineVertex(vertex, outwardOfVertex, G):
         edge.weight = getEdgeWeight(G, iter, vertex)
         G.E.append(edge)
     outwardOfVertex.weight = outwardOfVertex.weight + vertex.weight
-    #novo debug begin
     outwardOfVertex.preprocessed = True
+    #needs to be rewritten, more info in Issues/Bugs above
     outwardOfVertex.appendedVertexVal = vertex.val
-    #novo debug end
+    #needs to be rewritten
     G.V.remove(vertex)
     cG = G.E[:]
     for iter in cG:

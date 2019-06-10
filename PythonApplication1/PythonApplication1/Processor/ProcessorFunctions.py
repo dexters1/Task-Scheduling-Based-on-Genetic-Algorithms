@@ -71,20 +71,38 @@ def calculateETC(time, processor):
 # output args:
 #   int
 # Description: 
-#   Calculates the estimated time of completion for a task using ETC table
+#   Calculates the estimated time of completion for a task using ETC table.
+#   First it checks if the main module is a processor function test module so 
+#   it calls a different realization of the function. If it's not a processor
+#   function test module and the task is not preprocessed task then it lookups
+#   the value from the ETC table by transforming
+#   task and processor names into numbers. ( For example: V1 transforms into row 1 and 
+#   P2 transforms into columnn 2 for the lookup table ) if the vertex is a duplicated vertex
+#   it has a name that denotes the task number and the processor it's been duplicated on
+#   For example ( V1.2 - means task V1 has been duplicated for processor 2 ) so we need to
+#   split it's string name to the . and make it's name from V1.2 for example to V1 and then
+#   we lookup the ETC table as previously stated.
+#   If the task was preprocessed we calcualte ETC like in the previous formula, but we have
+#   to sum and calculate ETC for both of the vertecies that comprise a preprocessed graph
+#   ( a preprocessed graph has another vertex appended to it )
+# Issues:
+#   - The preprocessing module was never fully integrated and utilized, this function would
+#   need rewritting if the preprocessed vertex has multiple appended vertecies to it so it
+#   would be a list of appended verticies instead of just the last appended vertex and we'd
+#   have to iterate through the list of appended vertecies and calculate and sum their ETC
+#   along with the dominant vertex ETC
 def calculateRealETC(vertex, processor):
     pathStr = path.abspath(sys.modules['__main__'].__file__)
     if pathStr[-26::] == "Test_ProcessorFunctions.py":
         return calculateETC(vertex.weight, processor)
-    #novo debug
     if vertex.preprocessed == True:
+        #needs to be rewritten as described in Issues if preprocessing intends to be used
         firstETC = ETC[((round(float(vertex.val[1::])-1))*3 + round(float(processor.val[1::]))-1)]
         secondETC = ETC[((round(float(vertex.appendedVertexVal[1::])-1))*3 + round(float(processor.val[1::]))-1)]
-        return firstETC + secondETC  
-    #novo end
+        return firstETC + secondETC
+        #needs to be rewritten as described in Issues if preprocessing intends to be used  
     vertexVal = vertex.val.split('.')[0]
-    #return(ETC[((round(float(vertex.val[1::])-1))*3 + round(float(processor.val[1::]))-1)])
-    return(ETC[((round(float(vertexVal[1::])-1))*3 + round(float(processor.val[1::]))-1)])#novo debug
+    return(ETC[((round(float(vertexVal[1::])-1))*3 + round(float(processor.val[1::]))-1)])
 
 # Input args:
 #   Graph, Vertex, Vertex
@@ -238,10 +256,15 @@ def updateProcessorInfo(G):
     updateStartTime(G)
     updateFinishTime(G)
     addSlot(G)
-    #novo debug
     addLastWeightCost(G)
-    #end debug
 
+# Input args:
+#   Graph
+# output args:
+#   No output args
+# Description: 
+#    Adds a Slot to processor after the last task in taskList with duration of max successor
+#    weight of the last task 
 def addLastWeightCost(G):
     for processor in G.P.processorList:
         if len(processor.taskList) > 0:
@@ -263,6 +286,12 @@ def addLastWeightCost(G):
                     continue
                 processor.taskList.append(Slot(processor.taskList[-1].startTime, finishTime))
 
+# Input args:
+#   Graph, Vertex(task)
+# output args:
+#   int
+# Description: 
+#    Returns max weight of all successor edges of task
 def getHighestEdgeWeight(G, task):
     highestWeight = 0
     for edge in G.E:
