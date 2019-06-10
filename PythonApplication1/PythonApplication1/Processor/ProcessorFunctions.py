@@ -23,7 +23,10 @@ vmBaseSpeed = 1.0
 # Issues:
 #   - No error handling if input isn't correct
 def startTime(G, vertex):
-    return max(availableProcessorForTask(G, vertex),max(predecessorTime(G, vertex)))
+    if vertex.startTime == None:
+        return max(availableProcessorForTask(G, vertex),max(predecessorTime(G, vertex)))
+    else:
+        return vertex.startTime
 
 
 # Input args:
@@ -55,7 +58,10 @@ def predecessorTime(G, vertex):
 # Issues:
 #   - No error handling if input isn't correct
 def finishTime(G, vertex):
-    return startTime(G, vertex) + calculateRealETC(vertex, vertex.processor)
+    if vertex.finishTime == None:
+        return startTime(G, vertex) + calculateRealETC(vertex, vertex.processor)
+    else:
+        return vertex.finishTime
 
 # Input args:
 #   Int, Int
@@ -252,6 +258,7 @@ def updateProcessorTaskList(G):
 #    Updates all necessary info for Processor if changes are made to vertex
 #    processor assignment
 def updateProcessorInfo(G):
+    setTimeToNone(G)
     updateProcessorTaskList(G)
     updateStartTime(G)
     updateFinishTime(G)
@@ -300,3 +307,14 @@ def getHighestEdgeWeight(G, task):
             if highestWeight < edgeWeight:
                 highestWeight = edgeWeight
     return highestWeight
+
+# Input args:
+#   Graph
+# output args:
+#   No output
+# Description: 
+#    Sets start and finish time of all vertecies inside a graph to None
+def setTimeToNone(G):
+    for vertex in G.V:
+        vertex.startTime = None
+        vertex.finishTime = None

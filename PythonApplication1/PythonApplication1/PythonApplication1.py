@@ -7,7 +7,6 @@ from GeneticAlgorithm.GeneticOperations import *
 from TaskDuplication.TaskDuplicationFunctions import *
 
 if __name__ == "__main__":
-    #Sredi da ne bude rekurzivno
     mP = initialMultiPopulation(mPN, NIND, makeGraphGA)
 
     updateFitness(mP)
@@ -15,6 +14,7 @@ if __name__ == "__main__":
     print(mP.fittestIndividual.fitness)
     #Izmerim vreme od pocetka do posle GA i od GA do kraja
     #Trebaju slike pre i posle dupliciranja za sve te grafove od 10 20 30 40 i 50 taskova na 8 procesora
+    #Trebam slike raspodele posle GA i pre i posle dupliciranja
     noChange = 0
     for i in range(0, 100):
         lastCost = copy.deepcopy(mP.fittestIndividual.cost)
