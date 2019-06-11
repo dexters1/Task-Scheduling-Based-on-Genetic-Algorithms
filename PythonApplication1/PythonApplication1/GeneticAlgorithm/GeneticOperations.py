@@ -114,7 +114,7 @@ def mate(mP, population):
             return childList       
         parentList = random.sample(matePool, 2)      
         randomNum = random.uniform(0,1)
-        pC = probabilityOfCrossover(population, parentList[0], parentList[1])
+        pC = probabilityOfCrossover(population, parentList[0], parentList[1]) #probabilityOfCrossover Formula sto koriste mnogo usporava tok programa
         if pC > randomNum:
             numberOfChildren = numberOfChildren + 1
             child = crossoverOperation(population, parentList[0], parentList[1])

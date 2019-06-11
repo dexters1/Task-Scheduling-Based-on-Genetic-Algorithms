@@ -16,6 +16,7 @@ class Vertex:
         self.predecessors = []
         self.depth = None
         self.preprocessed = False
+        self.appendedVertexList = []
 
 class Edge:
     def __init__(self, u, v, weight=None):

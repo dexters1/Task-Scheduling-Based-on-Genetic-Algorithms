@@ -91,22 +91,15 @@ def calculateETC(time, processor):
 #   If the task was preprocessed we calcualte ETC like in the previous formula, but we have
 #   to sum and calculate ETC for both of the vertecies that comprise a preprocessed graph
 #   ( a preprocessed graph has another vertex appended to it )
-# Issues:
-#   - The preprocessing module was never fully integrated and utilized, this function would
-#   need rewritting if the preprocessed vertex has multiple appended vertecies to it so it
-#   would be a list of appended verticies instead of just the last appended vertex and we'd
-#   have to iterate through the list of appended vertecies and calculate and sum their ETC
-#   along with the dominant vertex ETC
 def calculateRealETC(vertex, processor):
     pathStr = path.abspath(sys.modules['__main__'].__file__)
     if pathStr[-26::] == "Test_ProcessorFunctions.py":
         return calculateETC(vertex.weight, processor)
     if vertex.preprocessed == True:
-        #needs to be rewritten as described in Issues if preprocessing intends to be used
-        firstETC = ETC[((round(float(vertex.val[1::])-1))*3 + round(float(processor.val[1::]))-1)]
-        secondETC = ETC[((round(float(vertex.appendedVertexVal[1::])-1))*3 + round(float(processor.val[1::]))-1)]
-        return firstETC + secondETC
-        #needs to be rewritten as described in Issues if preprocessing intends to be used  
+        ETCvalue = 0
+        for val in vertex.appendedVertexList:
+            ETCvalue = ETCvalue + ETC[((round(float(val[1::])-1))*3 + round(float(val[1::]))-1)]
+        return ETCvalue
     vertexVal = vertex.val.split('.')[0]
     return(ETC[((round(float(vertexVal[1::])-1))*3 + round(float(processor.val[1::]))-1)])
 
