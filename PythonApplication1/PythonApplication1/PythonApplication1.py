@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     start_time = time.time()
     #Fali mi neki ReadMe ili opis main-a, raspitaj se oko toga sta da stavis
-    mP = initialMultiPopulation(mPN, NIND, makeGraphGA)
+    mP = initialMultiPopulation(mPN, NIND, makeGraphGA30)
 
     updateFitness(mP)
     updateSelectionNumber(mP)
@@ -28,14 +28,14 @@ if __name__ == "__main__":
             print("No change for 10 generations")
             break
 
-    drawGraph(mP.fittestIndividual, "taskDuplicationTest/PreDuplicationLastGenerationSimplified")
+    drawGraph(mP.fittestIndividual, "taskDuplicationTest/PreDuplicationLastGeneration30")
 
     print("GA code: %s seconds" % (time.time() - start_time))
 
     taskDuplication(mP.fittestIndividual)
     print(mP.fittestIndividual.totalTime)
     print(totalCost(mP.fittestIndividual.P))
-    drawGraph(mP.fittestIndividual, "taskDuplicationTest/lastGenerationSimplified")
+    drawGraph(mP.fittestIndividual, "taskDuplicationTest/lastGeneration30")
 
     print("Full code: %s seconds" % (time.time() - start_time))
 

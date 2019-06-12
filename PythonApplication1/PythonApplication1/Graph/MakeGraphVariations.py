@@ -626,6 +626,55 @@ def makeGraphDuplicateTest():
 
     return G
 
+def makeGraphGA10():
+
+    p1 = Processor(capacity=0.9, val="p1")
+    p2 = Processor(capacity=0.9, val="p2")
+    p3 = Processor(capacity=0.9, val="p3")
+    p4 = Processor(capacity=0.9, val="p4")
+    p5 = Processor(capacity=0.9, val="p5")
+    p6 = Processor(capacity=0.9, val="p6")
+    p7 = Processor(capacity=0.9, val="p7")
+    p8 = Processor(capacity=0.9, val="p8")
+    P = ProcessorList([p1,p2,p3,p4,p5,p6,p7,p8])
+
+    v1 = Vertex("v1", 13, p3)
+    v2 = Vertex("v2", 17, p4)
+    v3 = Vertex("v3", 14, p6)
+    v4 = Vertex("v4", 9, p3)
+    v5 = Vertex("v5", 12, p1)
+    v6 = Vertex("v6", 13, p7)
+    v7 = Vertex("v7", 11, p1)
+    v8 = Vertex("v8", 10, p3)
+    v9 = Vertex("v9", 17, p8)
+    v10 = Vertex("v10", 15, p3)
+
+    vertex = [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10]
+
+    edges = []
+
+    edges.append(Edge(v1, v2, 18))
+    edges.append(Edge(v1, v3, 12))
+    edges.append(Edge(v1, v4, 9))
+    edges.append(Edge(v1, v5, 11))
+    edges.append(Edge(v1, v6, 14))
+    edges.append(Edge(v2, v8, 19))
+    edges.append(Edge(v2, v9, 16))
+    edges.append(Edge(v3, v7, 23))
+    edges.append(Edge(v4, v8, 27))
+    edges.append(Edge(v4, v9, 23))
+    edges.append(Edge(v5, v9, 13))
+    edges.append(Edge(v6, v8, 15))
+    edges.append(Edge(v7, v10, 17))
+    edges.append(Edge(v8, v10, 11))
+    edges.append(Edge(v9, v10, 13))
+
+    G = Graph(vertex, edges, P)
+
+    updateGraph(G)
+
+    return G
+
 def makeGraphGA20():
     p1 = Processor(capacity=0.9, val="p1")
     p2 = Processor(capacity=0.9, val="p2")
