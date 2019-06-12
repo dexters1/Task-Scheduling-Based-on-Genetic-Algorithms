@@ -15,12 +15,12 @@ class TestTaskDuplication(unittest.TestCase):
     def testTaskDuplication(self):
        G = makeGraphDuplicateTest()
        taskDuplication(G)
-       self.assertEqual(ceil(totalCost(G.P)), 39)
-       self.assertEqual([x.startTime for x in G.V], [0, 14, 27, 40, 51, 64, 56, 76, 94, 101, 76])
-       self.assertEqual([round(x.finishTime) for x in G.V],[14, 27, 40, 51, 64, 76, 76, 94, 101, 106, 92])
-       self.assertEqual([processor.val for processor in G.P.processorList[0].taskList], ['v1', 'v6', 'v2', 'v3', 'v4', 'v5', 'v9', 'v7', 'v8'])
+       self.assertEqual(ceil(totalCost(G.P)), 41)
+       self.assertEqual([x.startTime for x in G.V], [0, 14, 25, 34, 46, 65, 81, 94, 113, 110])
+       self.assertEqual([round(x.finishTime) for x in G.V],[14, 25, 34, 46, 65, 81, 94, 113, 131, 129])
+       self.assertEqual([processor.val for processor in G.P.processorList[0].taskList], ['v1', 'v2', 'v6', 'v3', 'v4', 'v5', 'v9', 'v7', 'v8'])
        self.assertEqual([processor.val for processor in G.P.processorList[1].taskList], [])
-       self.assertEqual([processor.val for processor in G.P.processorList[2].taskList], ['NoCostSlot', 'v9.3', 'v10'])
+       self.assertEqual([processor.val for processor in G.P.processorList[2].taskList], ['NoCostSlot', 'v10'])
        drawGraph(G, "testDuplication/DuplicateTest")
 
 
@@ -34,14 +34,6 @@ class TestTaskDuplication(unittest.TestCase):
         self.assertEqual([processor.val for processor in G.P.processorList[2].taskList], ['NoCostSlot', 'v4.3', 'v5', 'v8'])
 
     def testTaskDuplicationAfterGA(self):
-        #Ako se ukljuci predprocessiranje pre GA ne dolazi do dupliciranja taska jer nije korisno
-        #Duplicirani taskovi dobijaju svoju ocenu prioriteta i sortiraju se po tome u raspored 
-        #sto nekad izaziva da graf traje duze i da bude skuplji ( ti slucajevi se ne uzimaju kao koristni )
-        #mislim da treba videti sto se tice te raspodele tasko mislim da nesto potencijalno nisam dobro razumeo
-        #ili uradio i da to pravi sitne probleme sa algoritmom. 
-        #
-        #Also ne racunam u cenu kada se zavrsi poslednja obrada podataka na procesoru i on salje edge-om podatke
-        #nekom drugom  vertexu!!!!!!!! Nisam 100% siguran da li je to dobro
         G = makeGraphGA()
         drawGraph(G, "testDuplication/MakeGraphGA")
         mP = initialMultiPopulation(mPN, NIND, makeGraphGA)
@@ -68,9 +60,9 @@ class TestTaskDuplication(unittest.TestCase):
         print(totalCost(mP.fittestIndividual.P))
         drawGraph(mP.fittestIndividual, "testDuplication/FittestIndividualAfterDuplication")
 
-        self.assertEqual([processor.val for processor in mP.fittestIndividual.P.processorList[0].taskList], ['v1.1', 'v2', 'v3', 'v7'])
-        self.assertEqual([processor.val for processor in mP.fittestIndividual.P.processorList[1].taskList], ['NoCostSlot', 'v9', 'v8', 'v10'])
-        self.assertEqual([processor.val for processor in mP.fittestIndividual.P.processorList[2].taskList], ['v1', 'v4', 'v5', 'v6'])
+        self.assertEqual([processor.val for processor in mP.fittestIndividual.P.processorList[0].taskList], [])
+        self.assertEqual([processor.val for processor in mP.fittestIndividual.P.processorList[1].taskList], ['NoCostSlot', 'v7', 'v6', 'Slot', 'v8', 'v10'])
+        self.assertEqual([processor.val for processor in mP.fittestIndividual.P.processorList[2].taskList], ['v1', 'v4', 'v2', 'v5', 'v9', 'Slot'])
         
 
 
