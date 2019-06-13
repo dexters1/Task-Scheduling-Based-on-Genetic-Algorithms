@@ -1,0 +1,117 @@
+digraph {
+	v1 [label="v1
+w:13|pri:0|st:0|ft:8|p8" fontsize=8.0]
+	"v1.5" [label="v1.5
+w:13|pri:0|st:0|ft:23|p5" fontsize=8.0]
+	v5 [label="v5
+w:12|pri:194|st:8|ft:21|p8" fontsize=8.0]
+	v6 [label="v6
+w:13|pri:188|st:21|ft:35|p8" fontsize=8.0]
+	v2 [label="v2
+w:17|pri:173|st:23|ft:31|p5" fontsize=8.0]
+	v3 [label="v3
+w:14|pri:166|st:35|ft:44|p8" fontsize=8.0]
+	v4 [label="v4
+w:9|pri:165|st:31|ft:40|p5" fontsize=8.0]
+	v9 [label="v9
+w:17|pri:494|st:40|ft:53|p5" fontsize=8.0]
+	v8 [label="v8
+w:10|pri:469|st:53|ft:61|p5" fontsize=8.0]
+	v7 [label="v7
+w:11|pri:186|st:44|ft:52|p8" fontsize=8.0]
+	v10 [label="v10
+w:15|pri:372|st:72|ft:83|p1" fontsize=8.0]
+	"v10.2" [label="v10.2
+w:15|pri:288|st:72|ft:85|p2" fontsize=8.0]
+	v12 [label="v12
+w:17|pri:152|st:61|ft:65|p5" fontsize=8.0]
+	v11 [label="v11
+w:13|pri:87|st:73|ft:77|p8" fontsize=8.0]
+	v16 [label="v16
+w:13|pri:218|st:83|ft:94|p1" fontsize=8.0]
+	v15 [label="v15
+w:12|pri:108|st:94|ft:103|p1" fontsize=8.0]
+	"v15.2" [label="v15.2
+w:12|pri:81|st:85|ft:93|p2" fontsize=8.0]
+	v14 [label="v14
+w:9|pri:78|st:93|ft:106|p2" fontsize=8.0]
+	v13 [label="v13
+w:14|pri:14|st:88|ft:96|p4" fontsize=8.0]
+	v17 [label="v17
+w:11|pri:11|st:65|ft:74|p5" fontsize=8.0]
+	v19 [label="v19
+w:17|pri:203|st:103|ft:110|p1" fontsize=8.0]
+	v18 [label="v18
+w:10|pri:138|st:106|ft:115|p2" fontsize=8.0]
+	v20 [label="v20
+w:15|pri:118|st:121|ft:135|p2" fontsize=8.0]
+	v22 [label="v22
+w:17|pri:95|st:110|ft:121|p1" fontsize=8.0]
+	v21 [label="v21
+w:13|pri:61|st:135|ft:143|p2" fontsize=8.0]
+	v25 [label="v25
+w:12|pri:88|st:143|ft:150|p2" fontsize=8.0]
+	v26 [label="v26
+w:13|pri:79|st:121|ft:135|p1" fontsize=8.0]
+	v24 [label="v24
+w:9|pri:68|st:150|ft:157|p2" fontsize=8.0]
+	v23 [label="v23
+w:14|pri:14|st:157|ft:168|p6" fontsize=8.0]
+	v27 [label="v27
+w:11|pri:11|st:135|ft:143|p1" fontsize=8.0]
+	v29 [label="v29
+w:17|pri:64|st:157|ft:161|p2" fontsize=8.0]
+	v28 [label="v28
+w:10|pri:50|st:161|ft:170|p2" fontsize=8.0]
+	v30 [label="v30
+w:15|pri:30|st:170|ft:183|p2" fontsize=8.0]
+	v1 -> v3 [label=12 constraint=true fontsize=6.0]
+	v1 -> v5 [label=11 constraint=true fontsize=6.0]
+	v1 -> v6 [label=14 constraint=true fontsize=6.0]
+	v2 -> v8 [label=19 constraint=true fontsize=6.0]
+	v2 -> v9 [label=16 constraint=true fontsize=6.0]
+	v3 -> v7 [label=23 constraint=true fontsize=6.0]
+	v4 -> v8 [label=27 constraint=true fontsize=6.0]
+	v4 -> v9 [label=23 constraint=true fontsize=6.0]
+	v5 -> v9 [label=13 constraint=true fontsize=6.0]
+	v6 -> v8 [label=15 constraint=true fontsize=6.0]
+	v7 -> v10 [label=17 constraint=true fontsize=6.0]
+	v8 -> v10 [label=11 constraint=true fontsize=6.0]
+	v9 -> v10 [label=13 constraint=true fontsize=6.0]
+	v7 -> v11 [label=18 constraint=true fontsize=6.0]
+	v8 -> v11 [label=12 constraint=true fontsize=6.0]
+	v9 -> v12 [label=9 constraint=true fontsize=6.0]
+	v11 -> v13 [label=11 constraint=true fontsize=6.0]
+	v10 -> v15 [label=19 constraint=true fontsize=6.0]
+	v10 -> v16 [label=16 constraint=true fontsize=6.0]
+	v12 -> v17 [label=23 constraint=true fontsize=6.0]
+	v14 -> v18 [label=27 constraint=true fontsize=6.0]
+	v15 -> v19 [label=13 constraint=true fontsize=6.0]
+	v16 -> v19 [label=15 constraint=true fontsize=6.0]
+	v18 -> v20 [label=17 constraint=true fontsize=6.0]
+	v19 -> v20 [label=11 constraint=true fontsize=6.0]
+	v12 -> v16 [label=13 constraint=true fontsize=6.0]
+	v18 -> v21 [label=18 constraint=true fontsize=6.0]
+	v19 -> v22 [label=12 constraint=true fontsize=6.0]
+	v20 -> v24 [label=9 constraint=true fontsize=6.0]
+	v20 -> v25 [label=11 constraint=true fontsize=6.0]
+	v21 -> v23 [label=14 constraint=true fontsize=6.0]
+	v21 -> v24 [label=19 constraint=true fontsize=6.0]
+	v22 -> v25 [label=16 constraint=true fontsize=6.0]
+	v22 -> v26 [label=23 constraint=true fontsize=6.0]
+	v22 -> v27 [label=27 constraint=true fontsize=6.0]
+	v24 -> v28 [label=23 constraint=true fontsize=6.0]
+	v25 -> v28 [label=13 constraint=true fontsize=6.0]
+	v25 -> v29 [label=15 constraint=true fontsize=6.0]
+	v26 -> v29 [label=17 constraint=true fontsize=6.0]
+	v28 -> v30 [label=11 constraint=true fontsize=6.0]
+	v29 -> v30 [label=13 constraint=true fontsize=6.0]
+	"v15.2" -> v18 [label=23 constraint=true fontsize=6.0]
+	"v1.5" -> v2 [label=18 constraint=true fontsize=6.0]
+	"v1.5" -> v4 [label=9 constraint=true fontsize=6.0]
+	"v10.2" -> v14 [label=14 constraint=true fontsize=6.0]
+	"v10.2" -> "v15.2" [label=19 constraint=true fontsize=6.0]
+	v7 -> "v10.2" [label=17 constraint=true fontsize=6.0]
+	v8 -> "v10.2" [label=11 constraint=true fontsize=6.0]
+	v9 -> "v10.2" [label=13 constraint=true fontsize=6.0]
+}
