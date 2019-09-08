@@ -517,7 +517,7 @@ def makeGraphGA():
     edges.append(Edge(v9, v10, 13))
 
     G = Graph(vertex, edges, P)
-    simplifyGraph(G)
+    #simplifyGraph(G)
 
     updateGraph(G)
 
