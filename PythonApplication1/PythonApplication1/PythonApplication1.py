@@ -10,7 +10,6 @@ import time
 if __name__ == "__main__":
 
     start_time = time.time()
-    #Fali mi neki ReadMe ili opis main-a, raspitaj se oko toga sta da stavis
     mP = initialMultiPopulation(mPN, NIND, makeGraphGA)
 
     updateFitness(mP)
